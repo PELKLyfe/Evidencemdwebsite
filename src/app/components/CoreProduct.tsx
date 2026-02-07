@@ -104,7 +104,7 @@ export const CoreProduct = () => {
             viewport={{ once: true }}
             className="mb-4 text-4xl md:text-5xl lg:text-6xl text-ink font-title tracking-tight"
           >
-            Clinical reasoning for the <span className="text-brand italic font-display text-[48px]">care team</span>
+            Clinical reasoning for the <span className="text-brand italic font-display text-4xl md:text-[48px]">care team</span>
           </motion.h2>
           <p className="text-lg text-ink/60 font-body max-w-2xl mx-auto hidden md:block">
             Evidence-based intelligence at the point of care.
