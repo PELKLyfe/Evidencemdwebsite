@@ -226,7 +226,7 @@ export const CoreProduct = () => {
           </div>
 
           <div className="w-full overflow-hidden">
-            <div className="flex overflow-x-auto no-scrollbar snap-x snap-mandatory px-8 md:px-0 md:grid md:grid-cols-3 gap-16 md:gap-10 max-w-6xl mx-auto pb-12 md:pb-0">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-10 max-w-6xl mx-auto px-6 md:px-0 pb-12">
               {[
                 {
                   name: "Free",
@@ -254,7 +254,7 @@ export const CoreProduct = () => {
               ].map((plan, i) => (
                 <motion.div 
                   key={i}
-                  className={`shrink-0 w-[calc(100vw-64px)] sm:w-[340px] md:w-full snap-center bg-white border border-brand/10 p-10 flex flex-col items-center text-center transition-all duration-300 relative rounded-[32px] ${
+                  className={`w-full bg-white border border-brand/10 p-10 flex flex-col items-center text-center transition-all duration-300 relative rounded-[32px] ${
                     plan.primary ? 'border-brand ring-4 ring-brand/5 md:scale-105 z-10 shadow-2xl' : 'shadow-sm'
                   }`}
                 >
