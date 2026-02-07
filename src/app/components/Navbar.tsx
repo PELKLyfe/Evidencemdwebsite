@@ -69,14 +69,14 @@ export const Navbar = ({ activeTab, onTabChange, onSignInClick }: NavbarProps) =
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-[#F0F7F6]/90 backdrop-blur-xl shadow-xl border-t border-brand/5 py-6 animate-in fade-in slide-in-from-top-4">
-          <div className="flex flex-col gap-5 px-6">
+        <div className="lg:hidden absolute top-full left-0 right-0 bg-[#FEFDFB] shadow-2xl border-t border-brand/10 py-8 animate-in fade-in slide-in-from-top-4">
+          <div className="flex flex-col gap-6 px-6">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 onClick={() => handleTabClick(link.id)}
-                className={`text-lg font-bold text-left py-2 ${
-                  activeTab === link.id ? 'text-brand' : 'text-ink/40'
+                className={`text-xl font-bold text-left py-3 border-b border-brand/5 last:border-0 ${
+                  activeTab === link.id ? 'text-brand' : 'text-ink/60'
                 }`}
               >
                 {link.name}
@@ -87,7 +87,7 @@ export const Navbar = ({ activeTab, onTabChange, onSignInClick }: NavbarProps) =
                 onSignInClick();
                 setIsMenuOpen(false);
               }}
-              className="button button-primary py-4 text-center font-bold mt-2"
+              className="button button-primary py-5 text-center font-bold mt-4 shadow-lg shadow-brand/10"
             >
               Sign In / Sign Up
             </button>

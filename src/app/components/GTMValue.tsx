@@ -127,8 +127,8 @@ export const GTMValue = ({ onContactClick }: { onContactClick: () => void }) => 
       </div>
       {/* L Square Motif */}
       <div 
-        className="absolute top-12 right-16 pointer-events-none select-none z-0 scale-x-[-1] scale-y-[-1]"
-        style={{ width: 96, height: 96 }}
+        className="absolute top-12 right-6 md:right-16 pointer-events-none select-none z-0 scale-x-[-1] scale-y-[-1] opacity-60 md:opacity-100"
+        style={{ width: 64, height: 64 }}
       >
         {[
           { x: 1, y: 0 },
@@ -144,11 +144,11 @@ export const GTMValue = ({ onContactClick }: { onContactClick: () => void }) => 
             transition={{ duration: 0.4, delay: i * 0.1 }}
             style={{
               position: 'absolute',
-              width: 32,
-              height: 32,
+              width: '33.33%',
+              height: '33.33%',
               backgroundColor: '#FEFDFB',
-              top: block.y * 32,
-              left: block.x * 32,
+              top: `${block.y * 33.33}%`,
+              left: `${block.x * 33.33}%`,
             }}
           />
         ))}
@@ -156,8 +156,8 @@ export const GTMValue = ({ onContactClick }: { onContactClick: () => void }) => 
       
       {/* Custom 3-block checkered motif */}
       <div 
-        className="absolute bottom-[-72px] left-0 pointer-events-none select-none z-10 [transform:scaleX(-1)_scaleY(-1)]"
-        style={{ width: 144, height: 144 }}
+        className="absolute bottom-[-48px] md:bottom-[-72px] left-0 pointer-events-none select-none z-10 [transform:scaleX(-1)_scaleY(-1)]"
+        style={{ width: 96, height: 96 }}
       >
         {[
           { x: 1, y: 0 },
@@ -172,11 +172,11 @@ export const GTMValue = ({ onContactClick }: { onContactClick: () => void }) => 
             transition={{ duration: 0.4, delay: i * 0.1 }}
             style={{
               position: 'absolute',
-              width: 48,
-              height: 48,
+              width: '33.33%',
+              height: '33.33%',
               backgroundColor: '#FEFDFB',
-              bottom: block.y * 48,
-              left: block.x * 48,
+              bottom: `${block.y * 33.33}%`,
+              left: `${block.x * 33.33}%`,
             }}
           />
         ))}

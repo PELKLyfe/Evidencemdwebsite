@@ -1,9 +1,79 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { CheckCircle2, FileText, Image as ImageIcon, MessageSquare, ArrowUp, Paperclip } from 'lucide-react';
+import { FileText, Image as ImageIcon, MessageSquare, ArrowUp, Paperclip, Share2, Bookmark } from 'lucide-react';
 import { PixelCorner } from './PixelCorner';
 import appScreenshot from "figma:asset/ead860eee7467ede18a71a54fc9c6bcb4464eb53.png";
 import brandIcon from "figma:asset/553df17da779a92d47a352fd5eecb52645fc0217.png";
+
+// A realistic mock UI for the App to ensure perfect fit on mobile
+const MockAppUI = () => (
+  <div className="flex flex-col h-full bg-white font-body">
+    {/* Status Bar Mock */}
+    <div className="px-6 pt-4 pb-2 flex justify-between items-center opacity-40">
+      <span className="text-[10px] font-bold">9:41</span>
+      <div className="flex gap-1">
+        <div className="w-3 h-3 rounded-full border border-ink/20" />
+        <div className="w-3 h-3 rounded-full border border-ink/20" />
+      </div>
+    </div>
+
+    {/* Search/Query area */}
+    <div className="px-5 py-3">
+      <div className="bg-[#f0f4f4] rounded-2xl p-4 shadow-sm border border-brand/5">
+        <p className="text-[12px] text-ink/80 leading-relaxed italic">
+          "What are the clinical guidelines for managing Stage 2 Hypertension in patients with chronic kidney disease?"
+        </p>
+      </div>
+    </div>
+
+    {/* Reasoning Response */}
+    <div className="flex-grow px-5 py-4 space-y-5 overflow-y-auto no-scrollbar">
+      <div className="flex items-start gap-3">
+        <div className="w-8 h-8 rounded-lg bg-brand flex items-center justify-center shrink-0 shadow-lg shadow-brand/20">
+          <img src={brandIcon} alt="" className="w-5 h-5 object-contain" />
+        </div>
+        <div className="space-y-4">
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] font-bold text-brand uppercase tracking-widest">Evidence Reasoning</span>
+            <div className="h-px flex-grow bg-brand/10" />
+          </div>
+          
+          <div className="space-y-3">
+            <div className="flex gap-2">
+              <div className="w-1 h-1 rounded-full bg-brand mt-1.5 shrink-0" />
+              <p className="text-[11px] text-ink/70 leading-relaxed">
+                <span className="font-bold text-ink">Target BP:</span> Guidelines recommend <span className="bg-brand/5 text-brand px-1 rounded">{"<"}130/80 mmHg</span> for patients with CKD. [1]
+              </p>
+            </div>
+            <div className="flex gap-2">
+              <div className="w-1 h-1 rounded-full bg-brand mt-1.5 shrink-0" />
+              <p className="text-[11px] text-ink/70 leading-relaxed">
+                <span className="font-bold text-ink">First-line therapy:</span> ACE inhibitors or ARBs preferred for albuminuria. [2]
+              </p>
+            </div>
+          </div>
+
+          {/* Sources Card */}
+          <div className="bg-[#f8fafa] rounded-xl p-4 border border-brand/10 space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-[9px] font-bold text-ink/40 uppercase tracking-wider">Sources (3)</span>
+              <div className="flex gap-2">
+                <Share2 size={12} className="text-ink/30" />
+                <Bookmark size={12} className="text-ink/30" />
+              </div>
+            </div>
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 rounded bg-white border border-brand/10 flex items-center justify-center text-[8px] font-bold text-brand">1</div>
+                <span className="text-[9px] text-ink/60 truncate">KDIGO 2024 Clinical Practice Guideline</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
 
 export const CoreProduct = () => {
   const features = [
@@ -25,236 +95,192 @@ export const CoreProduct = () => {
   ];
 
   return (
-    <section id="app" className="py-16 bg-background relative">
-      {/* L Square Motif */}
-      <div 
-        className="absolute top-0 right-12 pointer-events-none select-none z-0 scale-x-[-1] scale-y-[-1]"
-        style={{ width: 96, height: 96 }}
-      >
-        {[
-          { x: 0, y: 0 },
-          { x: 1, y: 0 },
-          { x: 0, y: 1 }
-        ].map((block, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: i * 0.1 }}
-            className="border-2 border-[#FEFDFB]"
-            style={{
-              position: 'absolute',
-              width: 48,
-              height: 48,
-              backgroundColor: '#003636',
-              top: block.y * 48,
-              right: block.x * 48,
-            }}
-          />
-        ))}
-      </div>
-      <div className="container mx-auto px-6 relative">
-        <div className="text-center mb-10">
+    <section id="app" className="py-16 bg-background relative overflow-hidden">
+      <div className="container mx-auto px-0 md:px-6 relative">
+        <div className="text-center mb-10 md:mb-16 px-6">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-2 text-4xl md:text-5xl lg:text-6xl text-ink font-title tracking-tight"
+            className="mb-4 text-4xl md:text-5xl lg:text-6xl text-ink font-title tracking-tight"
           >
             Clinical reasoning for the <span className="text-brand italic font-display">care team</span>
           </motion.h2>
-          <div className="h-4" />
+          <p className="text-lg text-ink/60 font-body max-w-2xl mx-auto hidden md:block">
+            Evidence-based intelligence at the point of care.
+          </p>
         </div>
 
-        <div className="grid lg:grid-cols-[1.1fr_1fr] gap-12 items-center max-w-6xl mx-auto">
-          {/* Mock Chat Window */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="card p-0 overflow-hidden shadow-2xl border-brand/10 bg-white group max-w-[480px] mx-auto lg:mx-0"
-          >
-            {/* App Header */}
-            <div className="bg-[#f8fafa] border-b border-muted/20 px-3 py-2.5 flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="flex items-center gap-1">
-                  <div className="w-2 h-2 rounded-full bg-red-400/30"></div>
-                  <div className="w-2 h-2 rounded-full bg-yellow-400/30"></div>
-                  <div className="w-2 h-2 rounded-full bg-green-400/30"></div>
-                </div>
-                <div className="flex items-center gap-1.5 border-l border-muted/20 pl-3">
-                  <div className="w-6 h-6 rounded bg-brand flex items-center justify-center overflow-hidden">
-                    <img src={brandIcon} alt="EvidenceMD" className="w-full h-full object-contain" />
-                  </div>
-                  <span className="text-[9px] font-bold text-ink uppercase tracking-wider">Reasoning</span>
-                </div>
-              </div>
-              <div className="flex items-center gap-2">
-                {/* Removed Expert Badge */}
-                {/* Removed Placeholder Circle */}
-              </div>
-            </div>
-            
-            {/* App Content Area (using real screenshot) */}
-            <div className="relative h-[420px] overflow-hidden bg-white">
-              <div className="absolute inset-0">
-                <img 
-                  src={appScreenshot} 
-                  alt="EvidenceMD App Screenshot" 
-                  className="w-full h-full object-cover object-top"
-                />
-              </div>
-              
-              {/* Overlay Cues */}
-              <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-white via-white/40 to-transparent pointer-events-none"></div>
-            </div>
-            
-            {/* App Footer/Input Area */}
-            <div className="p-3 bg-white border-t border-muted/10">
-              <div className="bg-[#f8fafa] border border-muted/20 rounded-xl px-3 py-1.5 shadow-sm flex items-center justify-between gap-3">
-                <div className="text-ink/30 text-[10px] font-body flex-grow">Ask a follow up...</div>
-                <div className="flex items-center gap-1.5">
-                  <div className="p-1 text-ink/40">
-                    <Paperclip size={14} />
-                  </div>
-                  <div className="w-6 h-6 rounded-lg bg-brand/20 flex items-center justify-center text-brand">
-                    <ArrowUp size={14} />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Features List */}
-          <div className="space-y-6">
-            <div className="flex flex-col gap-4 mb-8">
-              <div className="flex items-center gap-3">
-                <div className="w-1.5 h-1.5 rounded-full bg-brand"></div>
-                <p className="text-sm font-body text-ink/70">Access clinical-grade reasoning on every device.</p>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-1.5 h-1.5 rounded-full bg-brand"></div>
-                <p className="text-sm font-body text-ink/70">Verify decisions with traceable citations.</p>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-1.5 h-1.5 rounded-full bg-brand"></div>
-                <p className="text-sm font-body text-ink/70">Collaborate using shared evidence chains.</p>
-              </div>
-            </div>
-            {features.map((feature, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="flex gap-4 items-start group"
-              >
-                <div className="shrink-0 w-10 h-10 rounded-xl bg-brand/10 flex items-center justify-center group-hover:scale-105 transition-transform">
-                  {React.cloneElement(feature.icon as React.ReactElement, { size: 20 })}
-                </div>
-                <div>
-                  <h3 className="text-xl mb-1">{feature.title}</h3>
-                  <p className="text-ink/60 text-sm leading-relaxed font-body">{feature.description}</p>
-                </div>
-              </motion.div>
-            ))}
-            
+        {/* Main Content */}
+        <div className="flex flex-col lg:grid lg:grid-cols-[1fr_1fr] gap-12 lg:gap-20 items-center max-w-6xl mx-auto">
+          
+          {/* App Preview */}
+          <div className="w-full flex justify-center px-6 lg:px-0">
             <motion.div 
-               initial={{ opacity: 0 }}
-               whileInView={{ opacity: 1 }}
-               viewport={{ once: true }}
-               transition={{ delay: 0.5 }}
-               className="pt-4"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="relative w-full max-w-[300px] md:max-w-[420px]"
             >
-               <button className="button button-primary px-8 py-3 text-base">
+              <div className="relative bg-[#003636] p-2 md:p-3 rounded-[44px] md:rounded-[60px] shadow-2xl overflow-hidden border-4 border-ink/5">
+                <div className="relative bg-white rounded-[36px] md:rounded-[52px] overflow-hidden">
+                  <div className="relative h-[540px] md:h-[620px] flex flex-col">
+                    <div className="md:hidden h-full">
+                      <MockAppUI />
+                    </div>
+                    <div className="hidden md:block h-full relative">
+                      <div className="bg-[#f8fafa] border-b border-muted/10 px-6 py-4 flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-lg bg-brand flex items-center justify-center">
+                          <img src={brandIcon} alt="EvidenceMD" className="w-5 h-5 object-contain" />
+                        </div>
+                        <span className="text-[12px] font-bold text-ink uppercase tracking-wider">Reasoning</span>
+                      </div>
+                      <div className="h-[460px] overflow-hidden">
+                        <img 
+                          src={appScreenshot} 
+                          alt="EvidenceMD App Screenshot" 
+                          className="w-full h-full object-cover object-top"
+                        />
+                      </div>
+                      <div className="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-white via-white to-transparent">
+                        <div className="bg-[#f8fafa] border border-muted/20 rounded-2xl px-4 py-3 shadow-sm flex items-center justify-between gap-3">
+                          <div className="text-ink/30 text-[12px] font-body">Ask a follow up...</div>
+                          <div className="w-9 h-9 rounded-xl bg-brand/10 flex items-center justify-center text-brand">
+                            <ArrowUp size={18} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="md:hidden p-4 bg-white border-t border-brand/5">
+                      <div className="bg-[#f8fafa] border border-brand/10 rounded-2xl px-4 py-3 flex items-center justify-between gap-3">
+                        <div className="text-ink/30 text-[11px] font-body">Ask a follow up...</div>
+                        <div className="w-8 h-8 rounded-xl bg-brand flex items-center justify-center text-white shadow-lg shadow-brand/20">
+                          <ArrowUp size={16} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Features Column */}
+          <div className="w-full space-y-10 lg:space-y-14 px-6 lg:px-0">
+            <div className="lg:hidden w-full overflow-x-auto no-scrollbar snap-x snap-mandatory -mx-6 px-6 pb-6">
+              <div className="flex gap-4">
+                {features.map((feature, idx) => (
+                  <motion.div 
+                    key={idx}
+                    className="shrink-0 w-[280px] snap-center bg-white border border-brand/10 p-7 flex flex-col gap-5 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.02)]"
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-brand/10 flex items-center justify-center text-brand">
+                      {React.cloneElement(feature.icon as React.ReactElement, { size: 24 })}
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-title mb-2">{feature.title}</h3>
+                      <p className="text-ink/60 text-sm leading-relaxed font-body">{feature.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            <div className="hidden lg:flex flex-col gap-10">
+              {features.map((feature, idx) => (
+                <motion.div 
+                  key={idx}
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="flex gap-6 items-start group"
+                >
+                  <div className="shrink-0 w-14 h-14 rounded-2xl bg-brand/5 border border-brand/5 flex items-center justify-center group-hover:bg-brand/10 group-hover:scale-105 transition-all duration-300">
+                    {React.cloneElement(feature.icon as React.ReactElement, { size: 28 })}
+                  </div>
+                  <div>
+                    <h3 className="text-2xl mb-1.5 font-title">{feature.title}</h3>
+                    <p className="text-ink/60 text-lg leading-relaxed font-body max-w-md">{feature.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+            
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+               <button className="button button-primary w-full sm:w-auto px-12 py-4.5 shadow-xl shadow-brand/20 rounded-2xl">
                  Download Mobile App
                </button>
-            </motion.div>
+               <button className="button button-secondary w-full sm:w-auto px-12 py-4.5 rounded-2xl">
+                 Live Demo
+               </button>
+            </div>
           </div>
         </div>
 
-        {/* App Plans Section */}
-        <div className="mt-32 pt-20 border-t border-muted/20">
-          <div className="text-center mb-16">
-            <h2 className="mb-4">App Plans</h2>
-            <p className="text-lg text-ink/60 font-body">Choose the plan that fits your workflow.</p>
+        {/* App Plans */}
+        <div className="mt-24 md:mt-40 pt-20 border-t border-muted/10 relative">
+          <div className="text-center mb-16 px-6">
+            <h2 className="mb-4 text-4xl md:text-5xl font-title">App Plans</h2>
+            <p className="text-lg text-ink/60 font-body">Choose the configuration that suits your needs.</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
-            {/* Free Plan */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="card p-8 flex flex-col items-center text-center hover:border-brand/50 transition-colors"
-            >
-              <h3 className="text-2xl mb-2 font-title">Free</h3>
-              <div className="text-3xl font-bold mb-6 text-ink">$0</div>
-              <p className="text-ink/60 text-sm mb-8 font-body leading-relaxed flex-grow">
-                Basic access to EvidenceMD with limited question use.
-              </p>
-              <button className="button button-secondary w-full py-3">Start Free</button>
-            </motion.div>
-
-            {/* Plus Plan */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="card p-8 flex flex-col items-center text-center border-brand ring-1 ring-brand/20 relative"
-            >
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand text-[#fefdfb] text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Recommended</div>
-              <h3 className="text-2xl mb-2 font-title">Plus</h3>
-              <div className="text-3xl font-bold mb-6 text-ink">$25 <span className="text-sm font-normal text-ink/40">/ month</span></div>
-              <div className="space-y-4 mb-8 flex-grow">
-                <p className="text-ink/60 text-sm font-body leading-relaxed">
-                  Full access for individual clinicians.
-                </p>
-                <div className="flex items-center justify-center gap-2 text-brand text-sm font-semibold">
-                  <CheckCircle2 size={16} />
-                  <span>Learner+ (CME/CPD opportunities) — included with Plus and above.</span>
-                </div>
-              </div>
-              <button className="button button-primary w-full py-3">Download the App</button>
-            </motion.div>
-
-            {/* Pro Plan */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="card p-8 flex flex-col items-center text-center hover:border-brand/50 transition-colors"
-            >
-              <h3 className="text-2xl mb-2 font-title">Pro</h3>
-              <div className="text-3xl font-bold mb-6 text-ink">$79 <span className="text-sm font-normal text-ink/40">/ month</span></div>
-              <div className="space-y-4 mb-8 flex-grow">
-                <p className="text-ink/60 text-sm font-body leading-relaxed">
-                  Includes AI Ambient Scribe.
-                </p>
-                <div className="flex items-center justify-center gap-2 text-brand text-sm font-semibold">
-                  <CheckCircle2 size={16} />
-                  <span>Learner+ (CME/CPD opportunities) — included with Plus and above.</span>
-                </div>
-              </div>
-              <button className="button button-primary w-full py-3">Download the App</button>
-            </motion.div>
+          <div className="w-full overflow-hidden">
+            <div className="flex overflow-x-auto no-scrollbar snap-x snap-mandatory px-8 md:px-0 md:grid md:grid-cols-3 gap-16 md:gap-10 max-w-6xl mx-auto pb-12 md:pb-0">
+              {[
+                {
+                  name: "Free",
+                  price: "$0",
+                  desc: "Basic access to EvidenceMD with limited question use. Perfect for exploring features.",
+                  btn: "Start Free",
+                  primary: false
+                },
+                {
+                  name: "Plus",
+                  price: "$25",
+                  period: "/ month",
+                  desc: "Full access for individual clinicians. Learner+ (CME/CPD) included automatically.",
+                  btn: "Download App",
+                  primary: true
+                },
+                {
+                  name: "Pro",
+                  price: "$79",
+                  period: "/ month",
+                  desc: "Includes AI Ambient Scribe for seamless documentation. Learner+ included.",
+                  btn: "Download App",
+                  primary: false
+                }
+              ].map((plan, i) => (
+                <motion.div 
+                  key={i}
+                  className={`shrink-0 w-[calc(100vw-64px)] sm:w-[340px] md:w-full snap-center bg-white border border-brand/10 p-10 flex flex-col items-center text-center transition-all duration-300 relative rounded-[32px] ${
+                    plan.primary ? 'border-brand ring-4 ring-brand/5 md:scale-105 z-10 shadow-2xl' : 'shadow-sm'
+                  }`}
+                >
+                  <h3 className="text-2xl mb-2 font-title">{plan.name}</h3>
+                  <div className="text-4xl md:text-5xl font-bold mb-8 text-ink">
+                    {plan.price}
+                    {plan.period && <span className="text-base font-normal text-ink/30 ml-1">{plan.period}</span>}
+                  </div>
+                  <p className="text-ink/60 text-base mb-10 font-body leading-relaxed flex-grow">
+                    {plan.desc}
+                  </p>
+                  <button className={`button ${plan.primary ? 'button-primary' : 'button-secondary'} w-full py-4.5 rounded-2xl font-bold`}>
+                    {plan.btn}
+                  </button>
+                </motion.div>
+              ))}
+            </div>
           </div>
 
-          <div className="text-center space-y-2">
-            <p className="text-[11px] text-ink/40 font-body">
-              Learner+ is included with Plus and Pro. Availability may vary by region and accrediting body.
-            </p>
-            <p className="text-[11px] text-ink/40 font-body">
-              Plans apply to the EvidenceMD app. API usage is priced separately.
+          <div className="mt-16 text-center px-10">
+            <p className="text-[11px] md:text-[12px] text-ink/30 font-body max-w-xl mx-auto italic">
+              Learner+ included with Plus and Pro. Plans apply to the app; API usage is priced separately.
             </p>
           </div>
         </div>
       </div>
-      <PixelCorner position="bottom-left" color="#003636" size={48} opacity={1} />
     </section>
   );
 };

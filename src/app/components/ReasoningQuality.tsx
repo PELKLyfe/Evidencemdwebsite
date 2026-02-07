@@ -48,7 +48,7 @@ export const ReasoningQuality = () => {
 
   return (
     <section className="py-24 bg-background relative">
-      <PixelCorner position="top-left" color="#003636" size={32} opacity={1} className="mt-8 ml-8" />
+      <PixelCorner position="top-left" color="#003636" size={32} opacity={1} className="mt-8 ml-8 hidden md:block" />
       <div className="container mx-auto px-6">
         {/* API Page Hero */}
         <div className="max-w-4xl mx-auto text-center mb-24">
@@ -368,7 +368,7 @@ export const ReasoningQuality = () => {
           </div>
         </div>
       </div>
-      <PixelCorner position="bottom-right" color="#003636" size={48} opacity={1} />
+      <PixelCorner position="bottom-right" color="#003636" size={48} opacity={1} className="hidden md:block" />
     </section>
   );
 };

@@ -45,10 +45,11 @@ export const Vision = ({ onTabChange }: VisionProps) => {
             
           </div>
         </div>
-        <PixelCorner position="bottom-right" color="#003636" size={48} opacity={1} />
+        <PixelCorner position="bottom-right" color="#003636" size={48} opacity={1} className="hidden md:block" />
+        <PixelCorner position="bottom-right" color="#003636" size={24} opacity={0.3} className="md:hidden" />
       </section>
-
-      {/* Main Narrative */}
+ 
+       {/* Main Narrative */}
       <section className="py-24 relative">
         <div className="container mx-auto px-6 relative">
           <div className="grid lg:grid-cols-12 gap-20 relative">
@@ -112,7 +113,7 @@ export const Vision = ({ onTabChange }: VisionProps) => {
                 {/* Our Approach */}
                 <motion.div variants={itemVariants} className="space-y-8 p-12 bg-ink text-white rounded-[32px] relative overflow-hidden shadow-2xl">
                    {/* Background watermark */}
-                  <div className="absolute top-0 right-0 p-8 opacity-10">
+                  <div className="absolute top-0 right-0 p-8 opacity-10 hidden md:block">
                     <Users size={200} />
                   </div>
                   
@@ -261,7 +262,8 @@ export const Vision = ({ onTabChange }: VisionProps) => {
             </div>
           </div>
         </div>
-        <PixelCorner position="bottom-left" color="#003636" size={48} opacity={1} />
+        <PixelCorner position="bottom-left" color="#003636" size={48} opacity={1} className="hidden md:block" />
+        <PixelCorner position="bottom-left" color="#003636" size={24} opacity={0.3} className="md:hidden" />
       </section>
     </div>
   );

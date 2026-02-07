@@ -177,7 +177,7 @@ export const Hero = () => {
           </motion.div>
         </div>
       </div>
-      <PixelCorner position="bottom-right" color="#003636" size={48} opacity={1} />
+      <PixelCorner position="bottom-right" color="#003636" size={48} opacity={1} className="hidden md:block" />
     </section>
   );
 };
