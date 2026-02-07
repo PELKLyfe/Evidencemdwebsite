@@ -96,7 +96,7 @@ export const CoreProduct = () => {
 
   return (
     <section id="app" className="py-16 bg-background relative overflow-hidden">
-      <div className="container mx-auto px-0 md:px-6 relative">
+      <div className="container mx-auto px-0 md:px-6 relative z-10">
         <div className="text-center mb-10 md:mb-16 px-6">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -222,7 +222,7 @@ export const CoreProduct = () => {
             <p className="text-lg text-ink/60 font-body">Choose the configuration that suits your needs.</p>
           </div>
 
-          <div className="w-full overflow-hidden">
+          <div className="w-full overflow-hidden relative">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-10 max-w-6xl mx-auto px-6 md:px-0 pb-12">
               {[
                 {
@@ -271,13 +271,22 @@ export const CoreProduct = () => {
             </div>
           </div>
 
-          <div className="mt-16 text-center px-10">
+          <div className="mt-16 text-center px-10 pb-20 relative">
             <p className="text-[11px] md:text-[12px] text-ink/30 font-body max-w-xl mx-auto italic">
               Learner+ included with Plus and Pro. Plans apply to the app; API usage is priced separately.
             </p>
           </div>
         </div>
       </div>
+      
+      {/* Square motif for App page - Dark Teal, absolute bottom of section (next to footer), desktop only */}
+      <PixelCorner 
+        position="bottom-right" 
+        color="#003636" 
+        size={48} 
+        opacity={1}
+        className="hidden md:block absolute bottom-0 right-0"
+      />
     </section>
   );
 };
