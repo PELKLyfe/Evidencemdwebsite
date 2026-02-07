@@ -104,7 +104,7 @@ export const CoreProduct = () => {
             viewport={{ once: true }}
             className="mb-4 text-4xl md:text-5xl lg:text-6xl text-ink font-title tracking-tight"
           >
-            Clinical reasoning for the <span className="text-brand italic font-display">care team</span>
+            Clinical reasoning for the <span className="text-brand italic font-display text-[48px]">care team</span>
           </motion.h2>
           <p className="text-lg text-ink/60 font-body max-w-2xl mx-auto hidden md:block">
             Evidence-based intelligence at the point of care.
@@ -207,12 +207,9 @@ export const CoreProduct = () => {
               ))}
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <div className="flex justify-center lg:justify-start pt-4">
                <button className="button button-primary w-full sm:w-auto px-12 py-4.5 shadow-xl shadow-brand/20 rounded-2xl">
                  Download Mobile App
-               </button>
-               <button className="button button-secondary w-full sm:w-auto px-12 py-4.5 rounded-2xl">
-                 Live Demo
                </button>
             </div>
           </div>
