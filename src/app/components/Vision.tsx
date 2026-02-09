@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Globe, Users, Cpu, ShieldCheck, ArrowRight, CreditCard, Linkedin, Mail } from 'lucide-react';
+import { Globe, Users, Cpu, ShieldCheck, ArrowRight, CreditCard, Linkedin } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { PixelCorner } from './PixelCorner';
 import luisImg from "figma:asset/e7f2187b571623f9c86e58f68d16f23933c58429.png";
@@ -194,7 +194,6 @@ export const Vision = ({ onTabChange }: VisionProps) => {
                       {
                         name: "Luis Cisneros",
                         role: "Co-Founder & CEO",
-                        email: "luis@evidencemd.ai",
                         linkedin: "https://www.linkedin.com/in/luis-cisneros-82a66a16a/",
                         bio: "Luis leads EvidenceMD’s product strategy, clinical positioning, and go-to-market execution. He focuses on building trusted medical reasoning infrastructure that delivers evidence-backed answers, transparent citations, and workflows that fit real clinical practice.",
                         image: luisImg
@@ -202,7 +201,6 @@ export const Vision = ({ onTabChange }: VisionProps) => {
                       {
                         name: "Krishnakumar Srinivasan",
                         role: "Co-Founder & CTO",
-                        email: "krishnakumar@evidencemd.ai",
                         linkedin: "https://www.linkedin.com/in/krishnakumar-srinivasan-506793106/",
                         bio: "Krishnakumar leads engineering and model development at EvidenceMD. He is a highly technical builder responsible for platform architecture, performance, and the systems that power EvidenceMD’s clinical reasoning, evidence retrieval, and developer-grade API infrastructure.",
                         image: krishnaImg
@@ -223,12 +221,6 @@ export const Vision = ({ onTabChange }: VisionProps) => {
                               className="w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-brand hover:bg-brand hover:text-white transition-colors"
                             >
                               <Linkedin size={14} />
-                            </a>
-                            <a 
-                              href={`mailto:${member.email}`}
-                              className="w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-brand hover:bg-brand hover:text-white transition-colors"
-                            >
-                              <Mail size={14} />
                             </a>
                           </div>
                         </div>
