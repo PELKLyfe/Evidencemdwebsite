@@ -57,7 +57,7 @@ export const Navbar = ({ activeTab, onTabChange, onSignInClick }: NavbarProps) =
             onClick={onSignInClick}
             className="button button-primary px-8 py-2.5 text-sm"
           >
-            Sign In / Sign Up
+            Sign In
           </button>
         </div>
 

@@ -4,6 +4,7 @@ import { FileText, Image as ImageIcon, MessageSquare, ArrowUp, Paperclip, Share2
 import { PixelCorner } from './PixelCorner';
 import appScreenshot from "figma:asset/ead860eee7467ede18a71a54fc9c6bcb4464eb53.png";
 import brandIcon from "figma:asset/553df17da779a92d47a352fd5eecb52645fc0217.png";
+import googlePlayIcon from "figma:asset/6fb3f26f922801efd856801ecabf5f6fe2c72c11.png";
 
 // A realistic mock UI for the App to ensure perfect fit on mobile
 const MockAppUI = () => (
@@ -207,10 +208,33 @@ export const CoreProduct = () => {
               ))}
             </div>
             
-            <div className="flex justify-center lg:justify-start pt-4">
-               <button className="button button-primary w-full sm:w-auto px-12 py-4.5 shadow-xl shadow-brand/20 rounded-2xl">
-                 Download Mobile App
-               </button>
+            <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-3 pt-4">
+               <a 
+                  href="https://apps.apple.com/us/app/evidencemd-medical-reasoning/id6751770543"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-ink text-white px-5 py-2.5 rounded-[12px] flex items-center gap-3 hover:opacity-90 transition-all border border-brand/20 shadow-lg w-fit"
+                >
+                  <svg viewBox="0 0 384 512" className="w-8 h-8 fill-white">
+                    <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
+                  </svg>
+                  <div className="flex flex-col items-start leading-tight text-left">
+                    <span className="text-[9px] font-medium uppercase tracking-tight">Download on the</span>
+                    <span className="text-lg font-bold font-body -mt-1 tracking-tight">App Store</span>
+                  </div>
+                </a>
+                <a 
+                  href="https://play.google.com/store/apps/details?id=ai.evidencemd.chat&pcampaignid=web_share" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="bg-ink text-white px-5 py-2.5 rounded-[12px] flex items-center gap-3 hover:opacity-90 transition-all border border-brand/20 shadow-lg w-fit"
+                >
+                  <img src={googlePlayIcon} alt="Google Play" className="w-8 h-8 object-contain" />
+                  <div className="flex flex-col items-start leading-tight text-left">
+                    <span className="text-[9px] font-medium uppercase tracking-tight">GET IT ON</span>
+                    <span className="text-lg font-bold font-body -mt-1 tracking-tight text-nowrap">Google Play</span>
+                  </div>
+                </a>
             </div>
           </div>
         </div>
@@ -229,7 +253,7 @@ export const CoreProduct = () => {
                   name: "Free",
                   price: "$0",
                   desc: "Basic access to EvidenceMD with limited question use. Perfect for exploring features.",
-                  btn: "Start Free",
+                  btn: "Get Started",
                   primary: false
                 },
                 {
@@ -237,7 +261,7 @@ export const CoreProduct = () => {
                   price: "$25",
                   period: "/ month",
                   desc: "Full access for individual clinicians. Learner+ (CME/CPD) included automatically.",
-                  btn: "Download App",
+                  btn: "Sign Up",
                   primary: true
                 },
                 {
@@ -245,7 +269,7 @@ export const CoreProduct = () => {
                   price: "$79",
                   period: "/ month",
                   desc: "Includes AI Ambient Scribe for seamless documentation. Learner+ included.",
-                  btn: "Download App",
+                  btn: "Sign Up",
                   primary: false
                 }
               ].map((plan, i) => (
