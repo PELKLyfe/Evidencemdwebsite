@@ -35,7 +35,7 @@ function App() {
       case 'home':
         return (
           <div className="relative">
-            <Hero />
+            <Hero onTabChange={setActiveTab} />
             <WhoItsFor />
             <FeaturesCarousel />
             <Testimonials />
