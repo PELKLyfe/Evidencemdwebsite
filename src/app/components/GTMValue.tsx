@@ -8,7 +8,7 @@ export const GTMValue = ({ onContactClick }: { onContactClick: () => void }) => 
   const stats = [
     { label: "Accuracy", value: "96%" },
     { label: "Cost Savings", value: "50%" },
-    { label: "Reasoning Speed", value: "6.6s" },
+    { label: "Reasoning Speed", value: "15.3s" },
     { label: "Source Citations", value: "100%" }
   ];
 
