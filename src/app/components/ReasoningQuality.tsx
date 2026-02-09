@@ -14,7 +14,7 @@ import {
 import { ApiDocumentation } from './ApiDocumentation';
 import { PixelCorner } from './PixelCorner';
 
-export const ReasoningQuality = () => {
+export const ReasoningQuality = ({ onSignInClick }: { onSignInClick?: () => void }) => {
   const [showDocumentation, setShowDocumentation] = useState(false);
 
   const benchmarks = [
@@ -71,7 +71,10 @@ export const ReasoningQuality = () => {
           </motion.p>
           
           <div className="flex flex-wrap justify-center gap-4 mb-12">
-            <button className="button button-primary px-10 py-4 flex items-center gap-2">
+            <button 
+              onClick={onSignInClick}
+              className="button button-primary px-10 py-4 flex items-center gap-2"
+            >
               Get Started Free <ChevronRight size={18} />
             </button>
             <button 
@@ -360,8 +363,12 @@ export const ReasoningQuality = () => {
                 </div>
 
                 <div className="flex flex-wrap items-center gap-4">
-                  <button className="button button-primary px-8 py-3">Buy Credits</button>
-
+                  <button 
+                    onClick={onSignInClick}
+                    className="button button-primary px-8 py-3"
+                  >
+                    Buy Credits
+                  </button>
                 </div>
               </div>
             </div>

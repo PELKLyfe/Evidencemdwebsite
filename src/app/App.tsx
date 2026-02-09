@@ -10,11 +10,14 @@ import { GTMValue } from './components/GTMValue';
 import { Vision } from './components/Vision';
 import { Footer } from './components/Footer';
 import { ContactModal } from './components/ContactModal';
+import { LoginPage } from './components/LoginPage';
+import { Auth0Provider } from '@auth0/auth0-react';
 import { Toaster, toast } from 'sonner';
 
-function App() {
+function AppContent() {
   const [activeTab, setActiveTab] = useState('home');
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [showLoginPage, setShowLoginPage] = useState(false);
 
   // Scroll to top whenever the active tab changes
   useEffect(() => {
@@ -28,16 +31,23 @@ function App() {
     }, 100);
 
     return () => clearTimeout(timer);
-  }, [activeTab]);
+  }, [activeTab, showLoginPage]);
 
   const openContactModal = () => setIsContactModalOpen(true);
   const closeContactModal = () => setIsContactModalOpen(false);
-
+  
   const handleSignIn = () => {
-    toast.info("Redirecting to EvidenceMD Web App...", {
-      description: "You are being navigated to the secure login portal."
-    });
+    setShowLoginPage(true);
   };
+
+  if (showLoginPage) {
+    return (
+      <div className="relative animate-in fade-in duration-500">
+        <Toaster position="top-center" expand={false} richColors />
+        <LoginPage onBack={() => setShowLoginPage(false)} />
+      </div>
+    );
+  }
 
   const renderContent = () => {
     switch (activeTab) {
@@ -53,7 +63,7 @@ function App() {
       case 'app':
         return <CoreProduct onSignInClick={handleSignIn} />;
       case 'api':
-        return <ReasoningQuality />;
+        return <ReasoningQuality onSignInClick={handleSignIn} />;
       case 'vision':
         return <Vision onTabChange={setActiveTab} />;
       case 'enterprise':
@@ -79,6 +89,24 @@ function App() {
       <Footer onTabChange={setActiveTab} />
       <ContactModal isOpen={isContactModalOpen} onClose={closeContactModal} />
     </div>
+  );
+}
+
+function App() {
+  // Replace these with your actual Auth0 credentials from the dashboard
+  const domain = "YOUR_AUTH0_DOMAIN";
+  const clientId = "YOUR_AUTH0_CLIENT_ID";
+
+  return (
+    <Auth0Provider
+      domain={domain}
+      clientId={clientId}
+      authorizationParams={{
+        redirect_uri: window.location.origin
+      }}
+    >
+      <AppContent />
+    </Auth0Provider>
   );
 }
 

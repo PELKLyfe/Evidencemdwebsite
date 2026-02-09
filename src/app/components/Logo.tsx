@@ -8,7 +8,7 @@ export const Logo: React.FC<{ className?: string, variant?: 'default' | 'inverse
       <img 
         src={variant === 'inverse' ? logoInverseImg : logoImg} 
         alt="EvidenceMD Logo" 
-        className="h-9 w-auto object-contain"
+        className="h-10 w-auto object-contain"
       />
     </div>
   );
