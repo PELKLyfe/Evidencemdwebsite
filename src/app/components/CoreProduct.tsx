@@ -76,7 +76,7 @@ const MockAppUI = () => (
   </div>
 );
 
-export const CoreProduct = () => {
+export const CoreProduct = ({ onSignInClick }: { onSignInClick?: () => void }) => {
   const features = [
     {
       title: "Citations you can verify",
@@ -287,7 +287,10 @@ export const CoreProduct = () => {
                   <p className="text-ink/60 text-base mb-10 font-body leading-relaxed flex-grow">
                     {plan.desc}
                   </p>
-                  <button className={`button ${plan.primary ? 'button-primary' : 'button-secondary'} w-full py-4.5 rounded-2xl font-bold`}>
+                  <button 
+                    onClick={onSignInClick}
+                    className={`button ${plan.primary ? 'button-primary' : 'button-secondary'} w-full py-4.5 rounded-2xl font-bold`}
+                  >
                     {plan.btn}
                   </button>
                 </motion.div>

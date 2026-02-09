@@ -18,7 +18,16 @@ function App() {
 
   // Scroll to top whenever the active tab changes
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' });
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTo(0, 0);
+    document.body.scrollTo(0, 0);
+    
+    // Fallback for slower rendering or scroll restoration
+    const timer = setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 100);
+
+    return () => clearTimeout(timer);
   }, [activeTab]);
 
   const openContactModal = () => setIsContactModalOpen(true);
@@ -42,7 +51,7 @@ function App() {
           </div>
         );
       case 'app':
-        return <CoreProduct />;
+        return <CoreProduct onSignInClick={handleSignIn} />;
       case 'api':
         return <ReasoningQuality />;
       case 'vision':

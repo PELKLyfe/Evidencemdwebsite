@@ -22,7 +22,7 @@ export const Navbar = ({ activeTab, onTabChange, onSignInClick }: NavbarProps) =
   const handleTabClick = (id: string) => {
     onTabChange(id);
     setIsMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -89,7 +89,7 @@ export const Navbar = ({ activeTab, onTabChange, onSignInClick }: NavbarProps) =
               }}
               className="button button-primary py-5 text-center font-bold mt-4 shadow-lg shadow-brand/10"
             >
-              Sign In / Sign Up
+              Sign In
             </button>
           </div>
         </div>

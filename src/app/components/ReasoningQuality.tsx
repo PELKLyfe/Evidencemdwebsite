@@ -361,7 +361,7 @@ export const ReasoningQuality = () => {
 
                 <div className="flex flex-wrap items-center gap-4">
                   <button className="button button-primary px-8 py-3">Buy Credits</button>
-                  <button className="button button-secondary px-8 py-3">Try the Playground</button>
+
                 </div>
               </div>
             </div>
