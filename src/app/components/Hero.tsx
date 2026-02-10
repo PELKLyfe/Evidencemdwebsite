@@ -12,7 +12,7 @@ import medicalCrossIcon from "figma:asset/7fc3afe194bb3556e17d78eeec4f965b29ff13
 
 export const Hero = ({ onTabChange, onSignInClick }: { onTabChange: (tab: string) => void, onSignInClick?: () => void }) => {
   return (
-    <section id="home" className="relative min-h-[90vh] flex items-center pt-8 pb-16 overflow-hidden bg-background">
+    <section id="home" className="relative min-h-[90vh] flex items-center pt-8 pb-0 overflow-hidden bg-background">
       {/* Editorial Background Elements */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         {/* Grain Texture Overlay */}
@@ -71,7 +71,7 @@ export const Hero = ({ onTabChange, onSignInClick }: { onTabChange: (tab: string
                     onClick={onSignInClick}
                     className="bg-ink text-white px-6 py-2.5 rounded-[12px] flex items-center gap-2 hover:bg-brand hover:scale-[1.02] active:scale-[0.98] transition-all border border-brand/10 shadow-lg w-fit group"
                   >
-                    <span className="text-lg font-bold font-title tracking-tight">Try Platform</span>
+                    <span className="text-lg font-bold font-title tracking-tight">Try the Platform</span>
                     <div className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors">
                       <ExternalLink size={12} className="text-white" />
                     </div>
@@ -124,7 +124,7 @@ export const Hero = ({ onTabChange, onSignInClick }: { onTabChange: (tab: string
                   <div className="bg-ink/[0.02] p-4 rounded-lg border border-ink/5">
                     <p className="text-[9px] uppercase font-bold text-ink/40 mb-2 tracking-widest">Query</p>
                     <p className="text-sm font-title text-ink leading-tight">
-                      "Assess readmission risk and generate SGLT2i medical rationale with billing codes."
+                      "Assess readmission risk and draft an SGLT2i medical rationale."
                     </p>
                   </div>
 
@@ -188,11 +188,11 @@ export const Hero = ({ onTabChange, onSignInClick }: { onTabChange: (tab: string
                    </div>
                    <div>
                       <p className="text-[9px] font-bold tracking-widest uppercase mb-0.5 text-brand">Trial Evidence</p>
-                      <p className="text-[10px] leading-tight opacity-80">CV Mortality Reduc.</p>
+                      <p className="text-[10px] leading-tight opacity-80">CV Mortality Reduction</p>
                    </div>
                 </div>
                 <div className="h-px bg-white/10 w-full mb-2"></div>
-                <p className="text-[9px] text-brand font-mono font-medium">Source: PKG-RULE-22</p>
+                <p className="text-[9px] text-brand font-mono font-medium">Source: PubMed / RCT</p>
               </div>
 
               {/* Background Glow */}

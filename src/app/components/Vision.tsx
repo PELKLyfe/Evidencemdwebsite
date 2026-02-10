@@ -57,13 +57,6 @@ export const Vision = ({ onTabChange }: VisionProps) => {
             {/* Left Sidebar (Sticky Context) */}
             <div className="lg:col-span-4">
               <div className="sticky top-32 space-y-12">
-                <div>
-                  <h3 className="font-title text-3xl text-ink mb-4">Building infrastructure</h3>
-                  <p className="font-body text-ink/60 leading-relaxed">
-                    Healthcare systems require a stable logic layer. <br/>We provide the infrastructure for this transition.
-                  </p>
-                </div>
-                
                 <div className="p-8 bg-brand/5 rounded-2xl border border-brand/10">
                   <Globe className="text-brand mb-4" size={32} />
                   <h4 className="font-title text-xl text-ink mb-2">Available globally</h4>

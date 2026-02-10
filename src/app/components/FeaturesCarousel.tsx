@@ -220,7 +220,7 @@ export const FeaturesCarousel = () => {
         style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/paper.png")' }}
       ></div>
 
-      <div className="sticky top-[80px] h-[calc(100svh-80px)] w-full flex flex-col md:flex-row md:items-center overflow-hidden pt-8 md:pt-20 relative">
+      <div className="sticky top-[80px] h-[calc(100svh-80px)] w-full flex flex-col md:flex-row md:items-center overflow-hidden pt-2 md:pt-4 relative">
         <div className="container mx-auto px-6 flex flex-col lg:grid lg:grid-cols-12 items-center lg:items-center gap-4 lg:gap-20 relative">
           
           <div className="lg:col-span-5 z-20 relative text-center lg:text-left w-full">

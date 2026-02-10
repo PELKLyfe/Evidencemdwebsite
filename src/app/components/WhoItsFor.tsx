@@ -105,7 +105,7 @@ export const WhoItsFor = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
-    <section id="who-its-for" className="py-24 px-6 md:px-12 bg-background relative">
+    <section id="who-its-for" className="pt-8 pb-8 px-6 md:px-12 bg-background relative">
       <div className="max-w-7xl mx-auto relative">
         <div className="text-center mb-10 md:mb-16">
           <motion.h2 
