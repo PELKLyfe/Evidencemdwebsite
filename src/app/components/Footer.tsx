@@ -16,7 +16,7 @@ export const Footer = ({ onTabChange }: FooterProps) => {
           <div className="col-span-1 lg:col-span-2">
             <Logo variant="inverse" className="mb-6" />
             <p className="text-background max-w-sm mb-8 leading-relaxed font-body">
-              The translation layer between clinical intent and administrative logic.
+              Clinical reasoning infrastructure for modern healthcare.
             </p>
             <div className="flex gap-4">
               <a href="https://www.linkedin.com/company/evidencemd/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand transition-colors text-[#fefdfb]">
@@ -54,8 +54,8 @@ export const Footer = ({ onTabChange }: FooterProps) => {
               <span>contact@evidencemd.ai</span>
             </div>
           </div>
-          <div className="text-[#fefdfb]/50 text-sm font-body text-right">
-            <p>Clinical insight you can trust</p>
+          <div className="text-[#fefdfb]/50 text-sm font-body text-center md:text-right">
+            <p className="mb-1">HIPAA-aligned. BAA available. Data encryption in transit and at rest.</p>
             <p>© {new Date().getFullYear()} EvidenceMD.ai. All rights reserved.</p>
           </div>
         </div>

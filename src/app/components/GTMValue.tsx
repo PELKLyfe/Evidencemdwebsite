@@ -2,13 +2,6 @@ import React from 'react';
 import { motion } from 'motion/react';
 
 export const GTMValue = ({ onContactClick }: { onContactClick: () => void }) => {
-  const stats = [
-    { label: "JSON-ready formats", value: "Structured outputs" },
-    { label: "Source-linked evidence", value: "Citations included" },
-    { label: "<15s median response", value: "Low latency" },
-    { label: "Role-based access", value: "Governance controls" }
-  ];
-
   return (
     <section id="enterprise" className="py-24 bg-ink relative overflow-visible">
       {/* Decorative element */}
@@ -21,21 +14,21 @@ export const GTMValue = ({ onContactClick }: { onContactClick: () => void }) => 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-white text-[42px] mb-4 font-title"
+            className="text-white text-[32px] md:text-[42px] mb-4 font-title max-w-4xl mx-auto"
           >
-            Evidence-based decision support for enterprise teams.
+            Evidence-based clinical reasoning infrastructure for enterprise teams.
           </motion.h2>
 
           <motion.div 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-brand/80 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-12"
+            className="text-brand/80 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-12 max-w-2xl mx-auto"
           >
-            HIPAA-aligned. Encryption by default. BAA available.
+            HIPAA-aligned. Encryption by default. BAA available. Audit logging and role-based access controls.
           </motion.div>
 
-          <div className="flex flex-col items-center gap-6 mb-8">
+          <div className="flex flex-col items-center gap-6 mb-20">
             <div className="flex flex-col md:flex-row gap-4">
               <button 
                 onClick={onContactClick}
@@ -49,65 +42,38 @@ export const GTMValue = ({ onContactClick }: { onContactClick: () => void }) => 
               >
                 Request Quote
               </button>
+              <button 
+                onClick={onContactClick}
+                className="bg-transparent border border-white/20 text-white/80 hover:text-white hover:border-white/40 px-8 py-4 text-base rounded-full transition-all font-body flex items-center gap-2"
+              >
+                <div className="w-2 h-2 rounded-full bg-brand"></div>
+                Security + Compliance
+              </button>
             </div>
-            <button
-              onClick={onContactClick}
-              className="text-white/40 hover:text-white font-body text-xs underline underline-offset-4 decoration-white/10 hover:decoration-white transition-all"
-            >
-              Ask about security
-            </button>
           </div>
 
-
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-20">
-            <motion.div 
-              whileHover={{ y: -5 }}
-              className="bg-white/5 border border-white/10 p-8 rounded-2xl text-left"
-            >
-              <h3 className="text-white text-lg font-title mb-3">Clinical outputs at scale</h3>
-              <p className="text-sm font-body text-white/60 leading-relaxed">Standardize outputs across the network with enterprise-grade clinical logic.</p>
-            </motion.div>
-            
-            <motion.div 
-              whileHover={{ y: -5 }}
-              className="bg-white/5 border border-white/10 p-8 rounded-2xl text-left"
-            >
-              <h3 className="text-white text-lg font-title mb-3">Coverage-aware admin logic</h3>
-              <p className="text-sm font-body text-white/60 leading-relaxed">Standardize admin workflows using coverage-aware guidance for reimbursement.</p>
-            </motion.div>
-
-            <motion.div 
-              whileHover={{ y: -5 }}
-              className="bg-white/5 border border-white/10 p-8 rounded-2xl text-left"
-            >
-              <h3 className="text-white text-lg font-title mb-3">Audit-ready citations</h3>
-              <p className="text-sm font-body text-white/60 leading-relaxed">Standardize citation trails with source-linked evidence for governance and audit logs.</p>
-            </motion.div>
-          </div>
-
-          <div className="max-w-5xl mx-auto pt-12">
+          <div className="max-w-7xl mx-auto">
             <h3 className="text-white/40 text-[10px] font-bold uppercase tracking-[0.4em] mb-12 text-center">Trusted by teams building clinical-grade workflows</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 {
-                  title: "Structured outputs",
-                  desc: "JSON-ready, schema-stable responses for production parsing.",
+                  title: "Structured Outputs",
+                  desc: "JSON-ready, schema-stable responses designed for production parsing and automation.",
                   value: "Structured"
                 },
                 {
-                  title: "Citations",
-                  desc: "Source-linked evidence chains for review and auditability.",
+                  title: "Audit-ready Citations",
+                  desc: "Source-linked evidence trails designed for governance review and audit defensibility.",
                   value: "Audit-ready"
                 },
                 {
-                  title: "Governance",
-                  desc: "Org-level policies, role-based access, review workflows.",
+                  title: "Policy-led Governance",
+                  desc: "Org-level policies, access control, review workflows, and configurable escalation rules.",
                   value: "Policy-led"
                 },
                 {
-                  title: "Reliability",
-                  desc: "Deterministic formatting modes, request IDs, retry-safe endpoints.",
+                  title: "Production Reliability",
+                  desc: "Deterministic formatting modes, request IDs, retry-safe endpoints, and observability support.",
                   value: "Production"
                 }
               ].map((block, i) => (
@@ -117,15 +83,17 @@ export const GTMValue = ({ onContactClick }: { onContactClick: () => void }) => 
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="bg-[#FEFDFB] border border-[#006D69]/30 px-10 py-12 rounded-3xl text-center shadow-sm flex flex-col items-center justify-center min-h-[280px]"
+                  className="bg-[#FEFDFB] border border-[#006D69]/30 px-10 py-12 rounded-3xl text-center shadow-sm flex flex-col items-center justify-center min-h-[300px]"
                 >
-                  <div className="text-3xl md:text-4xl font-bold text-brand mb-3 font-title text-[24px]">{block.value}</div>
-                  <div className="text-ink/60 font-bold uppercase tracking-[0.2em] text-[10px] md:text-xs font-body mb-6">{block.title}</div>
+                  <div className="text-3xl font-bold text-brand mb-3 font-title">{block.value}</div>
+                  <div className="text-ink/60 font-bold uppercase tracking-[0.2em] text-[10px] font-body mb-6">{block.title}</div>
                   <p className="text-ink/60 text-sm font-body leading-relaxed">{block.desc}</p>
                 </motion.div>
               ))}
             </div>
           </div>
+
+
         </div>
 
 
