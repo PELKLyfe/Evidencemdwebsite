@@ -83,11 +83,11 @@ export const GTMValue = ({ onContactClick }: { onContactClick: () => void }) => 
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="bg-[#FEFDFB] border border-[#006D69]/30 px-10 py-12 rounded-3xl text-center shadow-sm flex flex-col items-center justify-center min-h-[300px]"
+                  className="bg-[#FEFDFB] border border-[#006D69]/30 px-8 py-10 rounded-2xl text-center shadow-sm flex flex-col items-center justify-center min-h-[260px]"
                 >
-                  <div className="text-3xl font-bold text-brand mb-3 font-title">{block.value}</div>
-                  <div className="text-ink/60 font-bold uppercase tracking-[0.2em] text-[10px] font-body mb-6">{block.title}</div>
-                  <p className="text-ink/60 text-sm font-body leading-relaxed">{block.desc}</p>
+                  <div className="text-2xl font-bold text-brand mb-2 font-title">{block.value}</div>
+                  <div className="text-ink/60 font-bold uppercase tracking-[0.2em] text-[10px] font-body mb-4">{block.title}</div>
+                  <p className="text-ink/60 text-xs font-body leading-relaxed">{block.desc}</p>
                 </motion.div>
               ))}
             </div>

@@ -5,7 +5,6 @@ import {
   Users, 
   ShieldCheck, 
   Code2, 
-  UserCircle,
   ChevronRight,
   ChevronDown
 } from 'lucide-react';
@@ -81,22 +80,6 @@ const roleData = [
       'OpenAI-compatible endpoint usage [1]'
     ],
     sources: ['EvidenceMD API Docs', 'OpenAI-Compatible Schema', 'Example Payloads']
-  },
-  {
-    id: 'patients',
-    title: 'Patients',
-    icon: UserCircle,
-    summary: 'Clear explanations and evidence-backed answers written in plain language.',
-    question: 'My doctor said I have stage 3 kidney disease. What does that mean and what should I do next?',
-    output: [
-      'What it means in plain language',
-      'What causes it and what to monitor',
-      'Diet and medication considerations (general)',
-      'When to call your clinician urgently',
-      'Questions to ask at your next visit',
-      'Trusted sources for learning more [1][2]'
-    ],
-    sources: ['NIH / NIDDK CKD Overview', 'CDC Kidney Disease Basics', 'KDIGO Patient Resources']
   }
 ];
 
@@ -217,22 +200,22 @@ export const WhoItsFor = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
-                className="bg-white rounded-2xl border border-[#CCCCCC]/40 shadow-[0_20px_50px_rgba(0,54,54,0.04)] overflow-hidden min-h-[440px] md:min-h-[580px] flex flex-col relative"
+                className="bg-white rounded-2xl border border-[#CCCCCC]/40 shadow-[0_20px_50px_rgba(0,54,54,0.04)] overflow-hidden min-h-[400px] md:min-h-[480px] flex flex-col relative"
               >
-                <div className="p-6 md:p-12 flex-grow relative">
+                <div className="p-6 md:p-10 flex-grow relative">
                   {/* Block 1: Role Summary */}
-                  <div className="mb-6 md:mb-10 relative">
-                    <p className="text-xl md:text-3xl text-[#003636] font-title leading-tight max-w-2xl">
+                  <div className="mb-5 md:mb-8 relative">
+                    <p className="text-xl md:text-2xl text-[#003636] font-title leading-tight max-w-2xl">
                       {activeRole.summary}
                     </p>
                   </div>
 
                   {/* Block 2: Example Question */}
-                  <div className="mb-6 md:mb-10 relative">
+                  <div className="mb-5 md:mb-8 relative">
                     <span className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#006D69] mb-3 md:mb-4 font-body">
                       Example question
                     </span>
-                    <blockquote className="text-lg md:text-2xl font-display italic text-[#003636]/80 border-l-2 md:border-l-3 border-[#006D69]/20 pl-4 md:pl-8 py-1 md:py-2">
+                    <blockquote className="text-base md:text-xl font-display italic text-[#003636]/80 border-l-2 md:border-l-3 border-[#006D69]/20 pl-4 md:pl-8 py-1 md:py-2">
                       “{activeRole.question}”
                     </blockquote>
                   </div>
@@ -242,7 +225,7 @@ export const WhoItsFor = () => {
                     <span className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#006D69] mb-4 md:mb-5 font-body">
                       Typical output
                     </span>
-                    <div className="bg-[#FEFDFB]/50 border border-[#CCCCCC]/20 rounded-xl md:rounded-2xl p-6 md:p-8 font-body relative group/output">
+                    <div className="bg-[#FEFDFB]/50 border border-[#CCCCCC]/20 rounded-xl md:rounded-2xl p-5 md:p-6 font-body relative group/output">
                       {activeRole.id === 'devs' ? (
                         <div className="space-y-4 md:space-y-6 relative">
                           <div className="bg-[#003636] rounded-xl p-4 md:p-5 overflow-hidden shadow-lg shadow-black/20">
@@ -264,7 +247,7 @@ export const WhoItsFor = () => {
                           {activeRole.output?.map((item, i) => (
                             <li key={i} className="flex items-start gap-3 md:gap-4 text-[#003636]/80 group/item">
                               <span className="w-1.5 h-1.5 rounded-full bg-[#006D69]/40 group-hover/item:bg-[#006D69] mt-2 md:mt-2.5 shrink-0 transition-colors" />
-                              <span className="leading-relaxed text-sm md:text-lg">{item}</span>
+                              <span className="leading-relaxed text-sm md:text-base">{item}</span>
                             </li>
                           ))}
                         </ul>
