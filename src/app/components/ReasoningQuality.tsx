@@ -58,24 +58,25 @@ export const ReasoningQuality = ({ onSignInClick }: { onSignInClick?: () => void
             transition={{ delay: 0.1 }}
             className="text-5xl lg:text-7xl mb-8 leading-tight font-title"
           >
-            The Healthcare AI API <br />
-            <span className="text-brand italic font-title">Built for real-world healthcare decisions.</span>
+            Clinical Decision Support API <br />
+            <span className="text-brand italic font-title">Built for evidence-based outputs.</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-xl text-ink/60 max-w-2xl mx-auto mb-12 font-body"
+            className="text-xl text-ink/60 max-w-2xl mx-auto mb-6 font-body"
           >
-            One API for all healthcare needs. Powered by advanced medical chain-of-thought reasoning, trained on peer-reviewed literature, and designed for evidence-based clinical decisions.
+            Generate clinical and administrative decision support with structured formatting and citations. Built for production workflows.
           </motion.p>
+
           
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             <button 
               onClick={onSignInClick}
               className="button button-primary px-10 py-4 flex items-center gap-2"
             >
-              Get Started Free <ChevronRight size={18} />
+              Get API Key <ChevronRight size={18} />
             </button>
             <button 
               onClick={() => setShowDocumentation(true)}
@@ -84,7 +85,7 @@ export const ReasoningQuality = ({ onSignInClick }: { onSignInClick?: () => void
               View Documentation
             </button>
           </div>
-          <p className="text-sm text-ink/40 font-body italic">Stop using generic AI. EvidenceMD understands medicine.</p>
+          <p className="text-sm text-ink/40 font-body italic">Designed for reliable integration and consistent outputs.</p>
         </div>
 
         {/* Advanced Medical Logic Benchmark */}
@@ -233,7 +234,7 @@ export const ReasoningQuality = ({ onSignInClick }: { onSignInClick?: () => void
         <div className="mb-32">
           <div className="text-center mb-16">
             <h2 className="text-3xl mb-4 font-title">Why EvidenceMD Over Generic AI?</h2>
-            <p className="text-ink/60 font-body max-w-2xl mx-auto">Generic LLMs like ChatGPT, Claude, and Gemini are trained on internet data. EvidenceMD is purpose-built for healthcare with specialized medical logic.</p>
+            <p className="text-ink/60 font-body max-w-2xl mx-auto">Generic LLMs like ChatGPT, Claude, and Gemini rely on broad internet data. EvidenceMD is purpose-built for healthcare with specialized medical logic.</p>
           </div>
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {/* EMD Column */}
@@ -256,7 +257,7 @@ export const ReasoningQuality = ({ onSignInClick }: { onSignInClick?: () => void
                 </li>
                 <li className="flex gap-3 text-sm font-body text-ink/70">
                   <div className="w-1.5 h-1.5 rounded-full bg-brand mt-1.5 shrink-0"></div>
-                  Clinical-grade chain-of-thought logic.
+                  Clinical-grade medical logic.
                 </li>
               </ul>
             </div>

@@ -87,11 +87,11 @@ export const CoreProduct = ({ onSignInClick }: { onSignInClick?: () => void }) =
             viewport={{ once: true }}
             className="mb-4 text-4xl md:text-5xl lg:text-6xl text-ink font-title tracking-tight"
           >
-            Clinical decision support for the <span className="text-brand italic font-display text-4xl md:text-[48px]">care team</span>
+            Decision support built for the <span className="text-brand italic font-display text-4xl md:text-[48px]">care team.</span>
           </motion.h2>
           <div className="max-w-3xl mx-auto mt-6">
             <p className="text-ink/60 font-body text-lg italic">
-              Show the outcomes, not the feature list. Three representative outputs communicate the value faster than a long set of claims.
+              Three core outputs designed for real clinical workflow.
             </p>
           </div>
         </div>
@@ -246,7 +246,7 @@ export const CoreProduct = ({ onSignInClick }: { onSignInClick?: () => void }) =
           <div className="text-center mb-12 px-6 max-w-3xl mx-auto">
             <h2 className="mb-6 text-4xl md:text-5xl font-title">Flexible plans for clinical teams</h2>
             <p className="text-xl text-ink/70 font-body leading-relaxed">
-              EvidenceMD is built for real clinical workflow: fast documentation when you need it, and reliable decision support when it matters. Start free, then upgrade when you want unlimited capacity across scribe and reasoning.
+              Transparent pricing for clinicians and teams. Start free, then upgrade for unlimited documentation and decision support.
             </p>
           </div>
 

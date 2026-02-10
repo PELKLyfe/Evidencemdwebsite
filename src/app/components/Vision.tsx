@@ -78,7 +78,7 @@ export const Vision = ({ onTabChange }: VisionProps) => {
               >
                 {/* Introduction */}
                 <motion.div variants={itemVariants} className="space-y-6">
-                  <p className="text-xl font-body text-ink/80 leading-relaxed font-bold text-brand">
+                  <p className="font-[Cormorant] text-ink/80 leading-relaxed text-brand text-[36px] font-normal font-bold">
                     Building infrastructure
                   </p>
                   <p className="text-xl font-body text-ink/80 leading-relaxed">
