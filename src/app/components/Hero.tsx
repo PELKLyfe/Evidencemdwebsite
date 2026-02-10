@@ -43,16 +43,16 @@ export const Hero = ({ onTabChange }: { onTabChange: (tab: string) => void }) =>
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-6xl lg:text-7xl font-title text-ink mb-8 leading-[0.9] tracking-tight"
             >
-              The clinical reasoning <br/>platform for modern healthcare.
+              From bedside to <br/>back office. Verified clarity.
             </motion.h1>
             
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-xl lg:text-2xl font-body text-ink/70 mb-12 leading-relaxed"
+              className="text-xl lg:text-3xl font-body text-ink/70 mb-12 leading-tight"
             >
-              Evidence-based answers with citations you can verify, scoped by the model router for clinical, insurance, and operational workflows.
+              The translation layer between clinical intent <br className="hidden md:block" />and administrative logic.
             </motion.p>
 
             <motion.div 
@@ -144,7 +144,7 @@ export const Hero = ({ onTabChange }: { onTabChange: (tab: string) => void }) =>
                   <div className="space-y-4">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 rounded-full bg-brand"></div>
-                      <span className="text-[11px] font-bold text-ink uppercase tracking-wider">Automated Reasoning Chain</span>
+                      <span className="text-[11px] font-bold text-ink uppercase tracking-wider">Automated Logic Chain</span>
                     </div>
                     <div className="flex gap-4">
                        <div className="w-px bg-brand/20 h-full absolute left-[35px] mt-2"></div>

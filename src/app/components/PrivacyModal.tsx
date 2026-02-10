@@ -39,7 +39,7 @@ export const PrivacyModal = ({ isOpen, onClose }: PrivacyModalProps) => {
               <section>
                 <h3 className="text-lg font-title text-ink mb-3">1. Introduction</h3>
                 <p>
-                  EvidenceMD, Inc. ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our clinical reasoning platform and API services. By accessing or using our services, you agree to the terms of this Privacy Policy.
+                  EvidenceMD, Inc. ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our clinical decision support platform and API services. By accessing or using our services, you agree to the terms of this Privacy Policy.
                 </p>
               </section>
 
@@ -72,7 +72,7 @@ export const PrivacyModal = ({ isOpen, onClose }: PrivacyModalProps) => {
               <section>
                 <h3 className="text-lg font-title text-ink mb-3">4. How We Use Your Information</h3>
                 <ul className="list-disc pl-5 space-y-2">
-                  <li>To provide, maintain, and improve our clinical reasoning AI.</li>
+                  <li>To provide, maintain, and improve our clinical decision support AI.</li>
                   <li>To process transactions and manage your subscription or API credits.</li>
                   <li>To provide traceable evidence chains and citations for clinical decisions.</li>
                   <li>To ensure compliance with healthcare regulations and security protocols.</li>

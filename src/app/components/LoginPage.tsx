@@ -79,7 +79,7 @@ export const LoginPage = ({ onBack }: LoginPageProps) => {
             className="text-[42px] lg:text-[52px] font-title text-white leading-[1.1] mb-8 tracking-tight"
           >
             The next generation of <br />
-            <span className="text-[#FEFDFB] italic opacity-90">medical reasoning.</span>
+            <span className="text-[#FEFDFB] italic opacity-90">medical decision support.</span>
           </motion.h1>
           <p className="text-sm text-white/50 font-body max-w-xs leading-relaxed">
             Join thousands of clinicians and researchers using EvidenceMD to synthesize peer-reviewed literature.

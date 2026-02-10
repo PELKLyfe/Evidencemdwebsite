@@ -40,7 +40,7 @@ export const Vision = ({ onTabChange }: VisionProps) => {
               transition={{ delay: 0.1 }}
               className="text-6xl lg:text-8xl font-title text-ink mb-8 leading-[0.9] tracking-tight"
             >
-              The clinical reasoning infrastructure for modern healthcare
+              The translation layer between clinical intent and administrative logic
             </motion.h1>
             
           </div>
@@ -60,7 +60,7 @@ export const Vision = ({ onTabChange }: VisionProps) => {
                 <div>
                   <h3 className="font-title text-3xl text-ink mb-4">Building infrastructure</h3>
                   <p className="font-body text-ink/60 leading-relaxed">
-                    Healthcare systems require a stable reasoning layer. We provide the infrastructure for this transition.
+                    Healthcare systems require a stable logic layer. <br/>We provide the infrastructure for this transition.
                   </p>
                 </div>
                 
@@ -68,7 +68,7 @@ export const Vision = ({ onTabChange }: VisionProps) => {
                   <Globe className="text-brand mb-4" size={32} />
                   <h4 className="font-title text-xl text-ink mb-2">Available globally</h4>
                   <p className="text-sm text-ink/60 font-body">
-                    We deliver clinical-grade reasoning to clinicians and developers across the world.
+                    We deliver clinical-grade logic to clinicians and developers across the world.
                   </p>
                 </div>
               </div>
@@ -85,27 +85,29 @@ export const Vision = ({ onTabChange }: VisionProps) => {
               >
                 {/* Introduction */}
                 <motion.div variants={itemVariants} className="space-y-6">
-                  <p className="text-xl font-body text-ink/80 leading-relaxed">
-                    Clinicians are increasingly developing their own tools and automation. They require reasoning engines designed for medical and financial decision-making.
+                  <p className="text-xl font-body text-ink/80 leading-relaxed font-bold text-brand">
+                    Building infrastructure
                   </p>
                   <p className="text-xl font-body text-ink/80 leading-relaxed">
-                    General-purpose models often produce inconsistent quality and unverifiable reasoning. EvidenceMD solves this by providing a dedicated reasoning layer.
+                    Healthcare systems require a stable logic layer. We provide the infrastructure for this transition.
                   </p>
-
+                  <p className="text-xl font-body text-ink/80 leading-relaxed">
+                    We keep the doctor’s intent intact as it moves from bedside decision-making into payer, policy, and operational workflows.
+                  </p>
                 </motion.div>
 
                 {/* The Problem */}
                 <motion.div variants={itemVariants} className="space-y-8">
-                  <h2 className="text-4xl font-title text-ink pt-0">The Problem: <span className="text-brand italic underline decoration-brand/20 underline-offset-[12px] ml-2">Fragmented access to medical logic</span></h2>
+                  <h2 className="text-4xl font-title text-ink pt-0">The Problem: <span className="text-brand italic underline decoration-brand/20 underline-offset-[12px] ml-2">The clinical-to-admin handoff</span></h2>
                   <div className="space-y-6 text-lg text-ink/70 font-body leading-relaxed">
                     <p>
-                      Existing clinical AI products are often restricted to specific roles or regions. This creates friction across the care team.
+                      Healthcare breaks down at the point where medical intent meets administrative requirements. Prior authorizations, medical necessity checks, and policy logic create a wall that delays care.
                     </p>
                     <p>
-                      Innovation is gated by rigid identity models and limited global availability.
+                      Traditional systems treat clinical and administrative data as separate worlds, leading to fragmented decisions and operational burnout.
                     </p>
                     <p className="font-bold text-ink">
-                      EvidenceMD provides a universal reasoning engine for all healthcare stakeholders.
+                      EvidenceMD bridges this gap with medical precision for administrative efficiency.
                     </p>
                   </div>
                 </motion.div>
@@ -117,13 +119,13 @@ export const Vision = ({ onTabChange }: VisionProps) => {
                     <Users size={200} />
                   </div>
                   
-                  <h2 className="text-4xl font-title text-white">Model-Routed Intelligence</h2>
+                  <h2 className="text-4xl font-title text-white">Model-Routed Evidence</h2>
                   <div className="space-y-6 text-lg text-white/80 font-body leading-relaxed relative z-10">
                     <p>
                       EvidenceMD supports every role in the healthcare system through specialty and domain scoping.
                     </p>
                     <p className="text-white font-semibold">
-                      The model router provides clinical-grade, financial-grade, and operational reasoning modes.
+                      The model router provides clinical-grade, financial-grade, and operational logic modes.
                     </p>
                     <p>
                       Every query is processed through router-based scoping to ensure accurate outputs for the clinical context.
@@ -134,8 +136,8 @@ export const Vision = ({ onTabChange }: VisionProps) => {
                 {/* Model Router Grid */}
                 <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {[
-                    { label: "Clinical Mode", desc: "Clinical-grade reasoning for diagnostic queries.", icon: <ShieldCheck className="text-brand" size={20} /> },
-                    { label: "Financial Mode", desc: "Financial-grade reasoning and cost-sensitive logic.", icon: <CreditCard className="text-brand" size={20} /> },
+                    { label: "Clinical Mode", desc: "Clinical-grade logic for diagnostic queries.", icon: <ShieldCheck className="text-brand" size={20} /> },
+                    { label: "Financial Mode", desc: "Financial-grade logic and cost-sensitive analysis.", icon: <CreditCard className="text-brand" size={20} /> },
                     { label: "Ops Mode", desc: "Structured workflows and documentation scoping.", icon: <Cpu className="text-brand" size={20} /> }
                   ].map((mode, i) => (
                     <div key={i} className="p-6 border border-muted/20 rounded-2xl hover:border-brand/30 transition-colors">
@@ -148,7 +150,7 @@ export const Vision = ({ onTabChange }: VisionProps) => {
 
                 {/* Built for Builders */}
                 <motion.div variants={itemVariants} className="space-y-8">
-                  <h2 className="text-4xl font-title text-ink">Built for Builders: <span className="text-ink/40">An open reasoning API</span></h2>
+                  <h2 className="text-4xl font-title text-ink">Built for Builders: <span className="text-ink/40">An open decision API</span></h2>
                   <div className="space-y-6 text-lg text-ink/70 font-body leading-relaxed">
                     <p>
                       The future of healthcare consists of distributed tools built by clinicians and developers.
@@ -157,18 +159,18 @@ export const Vision = ({ onTabChange }: VisionProps) => {
                       EvidenceMD provides the API required to power these applications with stable, cost-efficient medical logic.
                     </p>
                     <p className="font-bold text-brand">
-                      We enable developers to build on a stable reasoning engine with citations you can verify.
+                      We enable developers to build on a stable logic engine with citations you can verify.
                     </p>
                   </div>
                 </motion.div>
 
                 {/* The Outcome */}
                 <motion.div variants={itemVariants} className="space-y-8 border-t border-muted/20 pt-16">
-                  <h2 className="text-4xl font-title text-ink">Verifiable clinical intelligence</h2>
+                  <h2 className="text-4xl font-title text-ink">Verifiable clinical insight</h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                     {[
-                      "Clinical-grade reasoning",
-                      "Financial-grade reasoning",
+                      "Clinical-grade logic",
+                      "Financial-grade logic",
                       "Citations you can verify",
                       "Audit-ready evidence chains"
                     ].map((item, i) => (
@@ -185,7 +187,7 @@ export const Vision = ({ onTabChange }: VisionProps) => {
                   <div className="space-y-4">
                     <h2 className="text-4xl font-title text-ink">Founding Team</h2>
                     <p className="text-lg text-ink/60 font-body leading-relaxed max-w-xl">
-                      Building the reasoning clinicians trust.
+                      Building the evidence clinicians trust.
                     </p>
                   </div>
                   
@@ -195,14 +197,14 @@ export const Vision = ({ onTabChange }: VisionProps) => {
                         name: "Luis Cisneros",
                         role: "Co-Founder & CEO",
                         linkedin: "https://www.linkedin.com/in/luis-cisneros-82a66a16a/",
-                        bio: "Luis leads EvidenceMD’s product strategy, clinical positioning, and go-to-market execution. He focuses on building trusted medical reasoning infrastructure that delivers evidence-backed answers, transparent citations, and workflows that fit real clinical practice.",
+                        bio: "Luis leads EvidenceMD’s product strategy, clinical positioning, and go-to-market execution. He focuses on building trusted medical logic infrastructure that delivers evidence-backed answers, transparent citations, and workflows that fit real clinical practice.",
                         image: luisImg
                       },
                       {
                         name: "Krishnakumar Srinivasan",
                         role: "Co-Founder & CTO",
                         linkedin: "https://www.linkedin.com/in/krishnakumar-srinivasan-506793106/",
-                        bio: "Krishnakumar leads engineering and model development at EvidenceMD. He is a highly technical builder responsible for platform architecture, performance, and the systems that power EvidenceMD’s clinical reasoning, evidence retrieval, and developer-grade API infrastructure.",
+                        bio: "Krishnakumar leads engineering and model development at EvidenceMD. He is a highly technical builder responsible for platform architecture, performance, and the systems that power EvidenceMD’s clinical decision support, evidence retrieval, and developer-grade API infrastructure.",
                         image: krishnaImg
                       }
                     ].map((member, i) => (
@@ -241,7 +243,7 @@ export const Vision = ({ onTabChange }: VisionProps) => {
                 >
                   <div className="group cursor-pointer">
                     <h2 className="text-5xl font-[Playfair_Display] text-ink group-hover:text-brand transition-colors leading-tight italic">
-                      The future of healthcare will be built. EvidenceMD is the reasoning layer it will be built on.
+                      The future of healthcare will be built. EvidenceMD is the intelligence layer it will be built on.
                     </h2>
                     <div className="mt-8 flex items-center gap-3 text-brand font-bold uppercase tracking-widest text-sm">
                       <span onClick={() => onTabChange?.('api')}>Access API Documentation</span>

@@ -27,8 +27,8 @@ export const ReasoningQuality = ({ onSignInClick }: { onSignInClick?: () => void
   const comparisonFeatures = [
     { name: "Citations & Sources", emd: true, openai: false, claude: false, gemini: false },
     { name: "Peer-Reviewed Information", emd: true, openai: false, claude: false, gemini: false },
-    { name: "Clinical Reasoning", emd: true, openai: false, claude: false, gemini: false },
-    { name: "Biomedical Reasoning", emd: true, openai: false, claude: false, gemini: false }
+    { name: "Clinical Decision Support", emd: true, openai: false, claude: false, gemini: false },
+    { name: "Biomedical Logic", emd: true, openai: false, claude: false, gemini: false }
   ];
 
   if (showDocumentation) {
@@ -87,11 +87,11 @@ export const ReasoningQuality = ({ onSignInClick }: { onSignInClick?: () => void
           <p className="text-sm text-ink/40 font-body italic">Stop using generic AI. EvidenceMD understands medicine.</p>
         </div>
 
-        {/* Advanced Medical Reasoning Benchmark */}
+        {/* Advanced Medical Logic Benchmark */}
         <div className="mb-32">
           <div className="text-center mb-12">
-            <h2 className="text-3xl mb-4 font-title">Advanced Medical Reasoning Benchmark</h2>
-            <p className="text-ink/60 font-body">Evidence-based medical reasoning accuracy compared to leading AI models</p>
+            <h2 className="text-3xl mb-4 font-title">Advanced Medical Logic Benchmark</h2>
+            <p className="text-ink/60 font-body">Evidence-based medical logic accuracy compared to leading AI models</p>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto mb-8">
             {benchmarks.map((b, i) => (
@@ -119,7 +119,7 @@ export const ReasoningQuality = ({ onSignInClick }: { onSignInClick?: () => void
         {/* See the Difference Table */}
         <div className="mb-32">
           <div className="text-center mb-16">
-            <h2 className="text-3xl mb-4 font-title">See the Difference: Real Clinical Reasoning</h2>
+            <h2 className="text-3xl mb-4 font-title">See the Difference: Real Clinical Decision Support</h2>
             <p className="text-ink/60 font-body max-w-2xl mx-auto">EvidenceMD delivers structured, evidence-based responses with citations from peer-reviewed sources.</p>
           </div>
           <div className="max-w-4xl mx-auto overflow-hidden rounded-[32px] border border-muted/10 bg-white shadow-sm">
@@ -233,7 +233,7 @@ export const ReasoningQuality = ({ onSignInClick }: { onSignInClick?: () => void
         <div className="mb-32">
           <div className="text-center mb-16">
             <h2 className="text-3xl mb-4 font-title">Why EvidenceMD Over Generic AI?</h2>
-            <p className="text-ink/60 font-body max-w-2xl mx-auto">Generic LLMs like ChatGPT, Claude, and Gemini are trained on internet data. EvidenceMD is purpose-built for healthcare with specialized medical reasoning.</p>
+            <p className="text-ink/60 font-body max-w-2xl mx-auto">Generic LLMs like ChatGPT, Claude, and Gemini are trained on internet data. EvidenceMD is purpose-built for healthcare with specialized medical logic.</p>
           </div>
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {/* EMD Column */}
@@ -244,7 +244,7 @@ export const ReasoningQuality = ({ onSignInClick }: { onSignInClick?: () => void
                 </div>
                 <h3 className="text-2xl font-bold font-title">EvidenceMD API</h3>
               </div>
-              <p className="text-brand text-xs font-bold uppercase tracking-widest mb-4">Purpose-built for medical & biomedical reasoning</p>
+              <p className="text-brand text-xs font-bold uppercase tracking-widest mb-4">Purpose-built for medical & biomedical logic</p>
               <ul className="space-y-4">
                 <li className="flex gap-3 text-sm font-body text-ink/70">
                   <div className="w-1.5 h-1.5 rounded-full bg-brand mt-1.5 shrink-0"></div>
@@ -256,7 +256,7 @@ export const ReasoningQuality = ({ onSignInClick }: { onSignInClick?: () => void
                 </li>
                 <li className="flex gap-3 text-sm font-body text-ink/70">
                   <div className="w-1.5 h-1.5 rounded-full bg-brand mt-1.5 shrink-0"></div>
-                  Clinical-grade chain-of-thought reasoning logic.
+                  Clinical-grade chain-of-thought logic.
                 </li>
               </ul>
             </div>

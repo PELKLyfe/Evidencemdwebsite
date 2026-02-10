@@ -16,7 +16,7 @@ const roleData = [
     id: 'clinicians',
     title: 'Clinicians',
     icon: Stethoscope,
-    summary: 'Evidence-based clinical reasoning with citations and structured decision support.',
+    summary: 'Clinical insight that transitions seamlessly into administrative and operational workflows.',
     question: 'What are the treatment options for CKD stage 4 in a patient with diabetes and eGFR 28?',
     output: [
       'Differential and risk factors',
@@ -32,7 +32,7 @@ const roleData = [
     id: 'ops',
     title: 'Care Teams & Operations',
     icon: Users,
-    summary: 'Structured answers for care coordination, utilization workflows, and clinical operations.',
+    summary: 'Bridging the gap between bedside decisions and utilization management with automated logic.',
     question: 'What are the discharge follow-up priorities for a CHF patient after an ED visit?',
     output: [
       'High-risk red flags to monitor',
@@ -48,7 +48,7 @@ const roleData = [
     id: 'finance',
     title: 'Insurance & Financial Workflows',
     icon: ShieldCheck,
-    summary: 'Coverage and prior authorization reasoning aligned to payer policy logic and medical necessity standards.',
+    summary: 'Precision medical logic translated into policy-ready prior authorization and coverage documentation.',
     question: 'Does a 5.9 cm thoracic aortic aneurysm meet medical necessity for intervention, and what documentation supports prior auth?',
     output: [
       'Medical necessity summary (plain, submission-ready)',
@@ -64,7 +64,7 @@ const roleData = [
     id: 'devs',
     title: 'Developers',
     icon: Code2,
-    summary: 'A healthcare reasoning API with predictable costs, structured outputs, and evidence chains.',
+    summary: 'A healthcare decision API with predictable costs, structured outputs, and evidence chains.',
     question: 'Generate a JSON response for a medication interaction check with citations and a confidence label.',
     output: null,
     jsonOutput: {
@@ -117,15 +117,6 @@ export const WhoItsFor = () => {
           >
             Who It’s For
           </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-lg md:text-xl text-[#003636]/70 max-w-2xl mx-auto font-body"
-          >
-            Built for everyone who touches patient care.
-          </motion.p>
         </div>
 
         {/* Mobile Selection: Scroll-down (Dropdown) Menu */}

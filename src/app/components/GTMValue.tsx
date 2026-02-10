@@ -8,7 +8,7 @@ export const GTMValue = ({ onContactClick }: { onContactClick: () => void }) => 
   const stats = [
     { label: "Accuracy", value: "96%" },
     { label: "Cost Savings", value: "50%" },
-    { label: "Reasoning Speed", value: "15.3s" },
+    { label: "Logic Latency", value: "15.3s" },
     { label: "Source Citations", value: "100%" }
   ];
 
@@ -16,12 +16,12 @@ export const GTMValue = ({ onContactClick }: { onContactClick: () => void }) => 
     {
       name: "Jatin Sohlot",
       role: "CTO, Nodesian",
-      quote: "Integrating the reasoning API into our existing infrastructure reduced operational overhead by 40%. We maintain clinical-grade performance at enterprise scale."
+      quote: "Integrating the decision API into our existing infrastructure reduced operational overhead by 40%. We maintain clinical-grade performance at enterprise scale."
     },
     {
       name: "Spencer Wozniak",
       role: "CTO, Serelora",
-      quote: "Financial-grade reasoning identifies coverage nuances that generic models miss. The evidence chains ensure audit-ready compliance for all claims processing."
+      quote: "Financial-grade logic identifies coverage nuances that generic models miss. The evidence chains ensure audit-ready compliance for all claims processing."
     }
   ];
 
@@ -39,7 +39,7 @@ export const GTMValue = ({ onContactClick }: { onContactClick: () => void }) => 
             viewport={{ once: true }}
             className="text-white text-[42px] mb-16 font-title"
           >
-            Reasoning infrastructure for enterprise medical systems
+            Decision infrastructure for enterprise medical systems
           </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-16">
@@ -47,8 +47,8 @@ export const GTMValue = ({ onContactClick }: { onContactClick: () => void }) => 
               whileHover={{ y: -5 }}
               className="bg-white/5 border border-white/10 p-6 rounded-2xl text-left"
             >
-              <h3 className="text-white text-lg font-title mb-2">Network-Scale Reasoning</h3>
-              <p className="text-sm font-body text-white/60 leading-relaxed">Scale clinical-grade intelligence across your entire provider ecosystem.</p>
+              <h3 className="text-white text-lg font-title mb-2">Network-Scale Logic</h3>
+              <p className="text-sm font-body text-white/60 leading-relaxed">Scale clinical-grade insight across your entire provider ecosystem.</p>
             </motion.div>
             
             <motion.div 

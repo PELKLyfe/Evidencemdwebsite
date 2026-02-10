@@ -177,7 +177,7 @@ while True:
             >
               <div className="mb-8">
                 <h4 className="text-2xl font-title mb-2">Quick Start</h4>
-                <p className="text-ink/60 font-body">Get started with clinical-grade reasoning in under 2 minutes.</p>
+                <p className="text-ink/60 font-body">Get started with clinical-grade decision logic in under 2 minutes.</p>
               </div>
 
               <div className="space-y-12">
@@ -231,7 +231,7 @@ while True:
             >
               <div className="mb-8">
                 <h4 className="text-2xl font-title mb-2">Single Query (cURL)</h4>
-                <p className="text-ink/60 font-body">Perfect for one-off medical questions and diagnostic reasoning.</p>
+                <p className="text-ink/60 font-body">Perfect for one-off medical questions and diagnostic synthesis.</p>
               </div>
 
               <div className="space-y-8">
@@ -346,7 +346,7 @@ while True:
             >
               <div className="mb-8">
                 <h4 className="text-2xl font-title mb-2">Available Models</h4>
-                <p className="text-ink/60 font-body">Choose the right model based on clinical complexity and required reasoning depth.</p>
+                <p className="text-ink/60 font-body">Choose the right model based on clinical complexity and required analysis depth.</p>
               </div>
 
               <div className="grid md:grid-cols-2 gap-8 mb-16">

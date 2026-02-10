@@ -1,97 +1,79 @@
-import React from 'react';
-import { motion } from 'motion/react';
-import { FileText, Image as ImageIcon, MessageSquare, ArrowUp, Paperclip, Share2, Bookmark } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { FileText, Image as ImageIcon, MessageSquare, ArrowUp, Paperclip, Share2, Bookmark, Check, ChevronRight } from 'lucide-react';
 import { PixelCorner } from './PixelCorner';
 import appScreenshot from "figma:asset/ead860eee7467ede18a71a54fc9c6bcb4464eb53.png";
 import brandIcon from "figma:asset/553df17da779a92d47a352fd5eecb52645fc0217.png";
 import googlePlayIcon from "figma:asset/6fb3f26f922801efd856801ecabf5f6fe2c72c11.png";
 
-// A realistic mock UI for the App to ensure perfect fit on mobile
-const MockAppUI = () => (
-  <div className="flex flex-col h-full bg-white font-body">
-    {/* Status Bar Mock */}
-    <div className="px-6 pt-4 pb-2 flex justify-between items-center opacity-40">
-      <span className="text-[10px] font-bold">9:41</span>
-      <div className="flex gap-1">
-        <div className="w-3 h-3 rounded-full border border-ink/20" />
-        <div className="w-3 h-3 rounded-full border border-ink/20" />
-      </div>
-    </div>
-
-    {/* Search/Query area */}
-    <div className="px-5 py-3">
-      <div className="bg-[#f0f4f4] rounded-2xl p-4 shadow-sm border border-brand/5">
-        <p className="text-[12px] text-ink/80 leading-relaxed italic">
-          "What are the clinical guidelines for managing Stage 2 Hypertension in patients with chronic kidney disease?"
-        </p>
-      </div>
-    </div>
-
-    {/* Reasoning Response */}
-    <div className="flex-grow px-5 py-4 space-y-5 overflow-y-auto no-scrollbar">
-      <div className="flex items-start gap-3">
-        <div className="w-8 h-8 rounded-lg bg-brand flex items-center justify-center shrink-0 shadow-lg shadow-brand/20">
-          <img src={brandIcon} alt="" className="w-5 h-5 object-contain" />
-        </div>
-        <div className="space-y-4">
-          <div className="flex items-center gap-2">
-            <span className="text-[10px] font-bold text-brand uppercase tracking-widest">Evidence Reasoning</span>
-            <div className="h-px flex-grow bg-brand/10" />
-          </div>
-          
-          <div className="space-y-3">
-            <div className="flex gap-2">
-              <div className="w-1 h-1 rounded-full bg-brand mt-1.5 shrink-0" />
-              <p className="text-[11px] text-ink/70 leading-relaxed">
-                <span className="font-bold text-ink">Target BP:</span> Guidelines recommend <span className="bg-brand/5 text-brand px-1 rounded">{"<"}130/80 mmHg</span> for patients with CKD. [1]
-              </p>
-            </div>
-            <div className="flex gap-2">
-              <div className="w-1 h-1 rounded-full bg-brand mt-1.5 shrink-0" />
-              <p className="text-[11px] text-ink/70 leading-relaxed">
-                <span className="font-bold text-ink">First-line therapy:</span> ACE inhibitors or ARBs preferred for albuminuria. [2]
-              </p>
-            </div>
-          </div>
-
-          {/* Sources Card */}
-          <div className="bg-[#f8fafa] rounded-xl p-4 border border-brand/10 space-y-3">
-            <div className="flex items-center justify-between">
-              <span className="text-[9px] font-bold text-ink/40 uppercase tracking-wider">Sources (3)</span>
-              <div className="flex gap-2">
-                <Share2 size={12} className="text-ink/30" />
-                <Bookmark size={12} className="text-ink/30" />
-              </div>
-            </div>
-            <div className="space-y-2">
-              <div className="flex items-center gap-2">
-                <div className="w-4 h-4 rounded bg-white border border-brand/10 flex items-center justify-center text-[8px] font-bold text-brand">1</div>
-                <span className="text-[9px] text-ink/60 truncate">KDIGO 2024 Clinical Practice Guideline</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-);
+// New high-fidelity screenshots
+import imagingImg from "figma:asset/3034510909197c8bc5c09f33a2227dad35535495.png";
+import labTrendImg from "figma:asset/a8a5ba09cfaf4269adb0591e24de864169523433.png";
+import scribeImg from "figma:asset/43e5aa74c09423ceae353e3d63f9d029b9f834fd.png";
 
 export const CoreProduct = ({ onSignInClick }: { onSignInClick?: () => void }) => {
-  const features = [
+  const [billingCycle, setBillingCycle] = useState<'monthly' | 'annually'>('annually');
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const outcomes = [
     {
-      title: "Citations you can verify",
-      description: "Access an evidence chain for every clinical response with document-level citations and direct source links.",
-      icon: <FileText className="text-brand" />
+      title: "Ambient scribe output",
+      description: "Fast, review-ready documentation that captures the visit accurately without template-filling.",
+      icon: <FileText className="text-brand" />,
+      image: scribeImg
     },
     {
-      title: "Clinical-grade reasoning",
-      description: "Process and reason over clinical text, medical images, and multipage PDFs simultaneously with high accuracy.",
-      icon: <ImageIcon className="text-brand" />
+      title: "Imaging interpretation summary",
+      description: "Clear extraction of key findings and clinical implications from imaging, with the signal surfaced first.",
+      icon: <ImageIcon className="text-brand" />,
+      image: imagingImg
     },
     {
-      title: "Model-Routed Intelligence",
-      description: "One interface with multiple reasoning modes. The model router scopes each query into clinical, insurance/financial, or developer workflows.",
-      icon: <MessageSquare className="text-brand" />
+      title: "Trend chart + explanation",
+      description: "Longitudinal trends made obvious, paired with a plain-language clinical interpretation of what changed and why it matters.",
+      icon: <MessageSquare className="text-brand" />,
+      image: labTrendImg
+    }
+  ];
+
+  // Auto-cycle outcomes
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((current) => (current + 1) % outcomes.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const appPlans = [
+    {
+      name: "Free",
+      price: "$0",
+      period: "",
+      desc: "Perfect for exploring core capabilities.",
+      features: [
+        "Basic note generation",
+        "10 free scribe sessions",
+        "Limited decision support questions",
+        "Standard capabilities included"
+      ],
+      btn: "Get Started",
+      primary: false
+    },
+    {
+      name: "Pro",
+      price: billingCycle === 'annually' ? "$89" : "$119",
+      period: "/ month",
+      billingNote: billingCycle === 'annually' ? "Billed annually" : "Billed monthly",
+      desc: "Unlimited capacity for professional practice.",
+      features: [
+        "Unlimited note generation",
+        "Unlimited scribe sessions",
+        "Unlimited clinical decision support*",
+        "All Pro Actions included",
+        "Higher-intensity workflows & CME/CPD"
+      ],
+      btn: "Sign Up",
+      primary: true
     }
   ];
 
@@ -105,110 +87,130 @@ export const CoreProduct = ({ onSignInClick }: { onSignInClick?: () => void }) =
             viewport={{ once: true }}
             className="mb-4 text-4xl md:text-5xl lg:text-6xl text-ink font-title tracking-tight"
           >
-            Clinical reasoning for the <span className="text-brand italic font-display text-4xl md:text-[48px]">care team</span>
+            Clinical decision support for the <span className="text-brand italic font-display text-4xl md:text-[48px]">care team</span>
           </motion.h2>
-          <p className="text-lg text-ink/60 font-body max-w-2xl mx-auto hidden md:block">
-            Evidence-based intelligence at the point of care.
-          </p>
+          <div className="max-w-3xl mx-auto mt-6">
+            <p className="text-ink/60 font-body text-lg italic">
+              Show the outcomes, not the feature list. Three representative outputs communicate the value faster than a long set of claims.
+            </p>
+          </div>
         </div>
 
         {/* Main Content */}
         <div className="flex flex-col lg:grid lg:grid-cols-[1fr_1fr] gap-12 lg:gap-20 items-center max-w-6xl mx-auto">
           
-          {/* App Preview */}
-          <div className="w-full flex justify-center px-6 lg:px-0">
+          {/* App Preview Frame */}
+          <div className="w-full flex justify-center px-6 lg:px-0 order-1 lg:order-none">
             <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="relative w-full max-w-[300px] md:max-w-[420px]"
+              className="relative w-full max-w-[320px] md:max-w-[420px]"
             >
               <div className="relative bg-[#003636] p-2 md:p-3 rounded-[44px] md:rounded-[60px] shadow-2xl overflow-hidden border-4 border-ink/5">
-                <div className="relative bg-white rounded-[36px] md:rounded-[52px] overflow-hidden">
-                  <div className="relative h-[540px] md:h-[620px] flex flex-col">
-                    <div className="md:hidden h-full">
-                      <MockAppUI />
-                    </div>
-                    <div className="hidden md:block h-full relative">
-                      <div className="bg-[#f8fafa] border-b border-muted/10 px-6 py-4 flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-brand flex items-center justify-center">
-                          <img src={brandIcon} alt="EvidenceMD" className="w-5 h-5 object-contain" />
-                        </div>
-                        <span className="text-[12px] font-bold text-ink uppercase tracking-wider">Reasoning</span>
-                      </div>
-                      <div className="h-[460px] overflow-hidden">
+                <div className="relative bg-white rounded-[36px] md:rounded-[52px] overflow-hidden aspect-[9/19] flex flex-col">
+                  
+                  {/* Internal Carousel */}
+                  <div className="flex-grow w-full relative bg-[#f8fafa]">
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={activeIndex}
+                        initial={{ opacity: 0, scale: 0.98 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 1.02 }}
+                        transition={{ duration: 0.3 }}
+                        className="absolute inset-0 w-full h-full flex items-center justify-center"
+                      >
                         <img 
-                          src={appScreenshot} 
-                          alt="EvidenceMD App Screenshot" 
-                          className="w-full h-full object-cover object-top"
+                          src={outcomes[activeIndex].image} 
+                          alt={outcomes[activeIndex].title}
+                          className={`w-full h-full ${activeIndex === 0 ? 'object-cover object-top' : 'object-contain'}`}
                         />
-                      </div>
-                      <div className="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-white via-white to-transparent">
-                        <div className="bg-[#f8fafa] border border-muted/20 rounded-2xl px-4 py-3 shadow-sm flex items-center justify-between gap-3">
-                          <div className="text-ink/30 text-[12px] font-body">Ask a follow up...</div>
-                          <div className="w-9 h-9 rounded-xl bg-brand/10 flex items-center justify-center text-brand">
-                            <ArrowUp size={18} />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="md:hidden p-4 bg-white border-t border-brand/5">
-                      <div className="bg-[#f8fafa] border border-brand/10 rounded-2xl px-4 py-3 flex items-center justify-between gap-3">
-                        <div className="text-ink/30 text-[11px] font-body">Ask a follow up...</div>
-                        <div className="w-8 h-8 rounded-xl bg-brand flex items-center justify-center text-white shadow-lg shadow-brand/20">
-                          <ArrowUp size={16} />
-                        </div>
+                      </motion.div>
+                    </AnimatePresence>
+
+                    {/* App Overlay elements */}
+                    <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-white via-white/40 to-transparent flex items-end justify-center pb-6">
+                       <div className="flex gap-1.5">
+                        {outcomes.map((_, i) => (
+                          <div 
+                            key={i} 
+                            className={`h-1 rounded-full transition-all duration-300 ${activeIndex === i ? 'w-5 bg-brand' : 'w-2 bg-brand/20'}`} 
+                          />
+                        ))}
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+              
+              {/* Floating logic label */}
+              <div className="absolute -right-4 top-1/4 bg-white shadow-xl border border-brand/10 p-4 rounded-2xl hidden md:block max-w-[140px]">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-2 h-2 rounded-full bg-brand animate-pulse" />
+                  <span className="text-[10px] font-bold text-brand uppercase tracking-tighter">Live Insight</span>
+                </div>
+                <p className="text-[11px] text-ink leading-tight font-body">Clinical synthesis generated in real-time.</p>
+              </div>
+
+              {/* Patient Data Disclaimer */}
+              <div className="mt-8 px-6 text-center">
+                <p className="text-[10px] md:text-[11px] text-ink/30 font-body uppercase tracking-widest leading-relaxed">
+                  Note: All patient data and clinical conversations shown are mock, synthetic data generated for demonstration purposes.
+                </p>
+              </div>
             </motion.div>
           </div>
 
-          {/* Features Column */}
-          <div className="w-full space-y-10 lg:space-y-14 px-6 lg:px-0">
-            <div className="lg:hidden w-full overflow-x-auto no-scrollbar snap-x snap-mandatory -mx-6 px-6 pb-6">
-              <div className="flex gap-4">
-                {features.map((feature, idx) => (
-                  <motion.div 
-                    key={idx}
-                    className="shrink-0 w-[280px] snap-center bg-white border border-brand/10 p-7 flex flex-col gap-5 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.02)]"
-                  >
-                    <div className="w-12 h-12 rounded-xl bg-brand/10 flex items-center justify-center text-brand">
-                      {React.cloneElement(feature.icon as React.ReactElement, { size: 24 })}
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-title mb-2">{feature.title}</h3>
-                      <p className="text-ink/60 text-sm leading-relaxed font-body">{feature.description}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            <div className="hidden lg:flex flex-col gap-10">
-              {features.map((feature, idx) => (
-                <motion.div 
+          {/* Outcomes Column */}
+          <div className="w-full space-y-8 lg:space-y-10 px-6 lg:px-0">
+            <div className="flex flex-col divide-y divide-brand/10">
+              {outcomes.map((outcome, idx) => (
+                <button 
                   key={idx}
-                  initial={{ opacity: 0, x: 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="flex gap-6 items-start group"
+                  onClick={() => setActiveIndex(idx)}
+                  className="text-left py-8 first:pt-0 last:pb-0 group transition-all duration-300 relative"
                 >
-                  <div className="shrink-0 w-14 h-14 rounded-2xl bg-brand/5 border border-brand/5 flex items-center justify-center group-hover:bg-brand/10 group-hover:scale-105 transition-all duration-300">
-                    {React.cloneElement(feature.icon as React.ReactElement, { size: 28 })}
+                  <div className="flex gap-8 items-start">
+                    <div className="flex flex-col items-center pt-1.5">
+                      <span className={`text-xs font-bold tracking-[0.2em] transition-colors duration-300 ${
+                        activeIndex === idx ? 'text-brand' : 'text-ink/30'
+                      }`}>
+                        0{idx + 1}
+                      </span>
+                      {activeIndex === idx && (
+                        <motion.div 
+                          layoutId="active-indicator"
+                          className="w-px h-12 bg-brand mt-4"
+                          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                        />
+                      )}
+                    </div>
+                    <div className="flex-grow">
+                      <h3 className={`text-2xl md:text-3xl font-title transition-all duration-300 mb-3 ${
+                        activeIndex === idx ? 'text-brand translate-x-1' : 'text-ink group-hover:text-brand/70'
+                      }`}>
+                        {outcome.title}
+                      </h3>
+                      <AnimatePresence mode="wait">
+                        {activeIndex === idx && (
+                          <motion.p 
+                            initial={{ opacity: 0, height: 0, y: -10 }}
+                            animate={{ opacity: 1, height: 'auto', y: 0 }}
+                            exit={{ opacity: 0, height: 0, y: -10 }}
+                            className="text-ink/60 text-base md:text-lg leading-relaxed font-body max-w-md"
+                          >
+                            {outcome.description}
+                          </motion.p>
+                        )}
+                      </AnimatePresence>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-2xl mb-1.5 font-title">{feature.title}</h3>
-                    <p className="text-ink/60 text-lg leading-relaxed font-body max-w-md">{feature.description}</p>
-                  </div>
-                </motion.div>
+                </button>
               ))}
             </div>
             
-            <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-3 pt-4">
+            <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-3 pt-6">
                <a 
                   href="https://apps.apple.com/us/app/evidencemd-medical-reasoning/id6751770543"
                   target="_blank"
@@ -239,54 +241,83 @@ export const CoreProduct = ({ onSignInClick }: { onSignInClick?: () => void }) =
           </div>
         </div>
 
-        {/* App Plans */}
+        {/* Product Tiers */}
         <div className="mt-24 md:mt-40 pt-20 border-t border-muted/10 relative">
-          <div className="text-center mb-16 px-6">
-            <h2 className="mb-4 text-4xl md:text-5xl font-title">App Plans</h2>
-            <p className="text-lg text-ink/60 font-body">Choose the configuration that suits your needs.</p>
+          <div className="text-center mb-12 px-6 max-w-3xl mx-auto">
+            <h2 className="mb-6 text-4xl md:text-5xl font-title">Flexible plans for clinical teams</h2>
+            <p className="text-xl text-ink/70 font-body leading-relaxed">
+              EvidenceMD is built for real clinical workflow: fast documentation when you need it, and reliable decision support when it matters. Start free, then upgrade when you want unlimited capacity across scribe and reasoning.
+            </p>
+          </div>
+
+          {/* Billing Toggle */}
+          <div className="flex flex-col items-center mb-16">
+            <div className="relative bg-brand/5 p-1.5 rounded-2xl flex items-center border border-brand/10 shadow-sm">
+              <motion.div 
+                initial={false}
+                animate={{ x: billingCycle === 'annually' ? 0 : 130 }}
+                transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                className="absolute w-[130px] h-[calc(100%-12px)] bg-brand rounded-xl shadow-lg shadow-brand/20"
+              />
+              <button
+                onClick={() => setBillingCycle('annually')}
+                className={`relative z-10 w-[130px] py-2.5 text-sm font-bold transition-colors duration-200 ${billingCycle === 'annually' ? 'text-white' : 'text-ink/60 hover:text-ink'}`}
+              >
+                Annually
+              </button>
+              <button
+                onClick={() => setBillingCycle('monthly')}
+                className={`relative z-10 w-[130px] py-2.5 text-sm font-bold transition-colors duration-200 ${billingCycle === 'monthly' ? 'text-white' : 'text-ink/60 hover:text-ink'}`}
+              >
+                Monthly
+              </button>
+            </div>
+            <div className="mt-3 flex items-center gap-2">
+              <div className="h-px w-4 bg-brand/20"></div>
+              <span className="text-[12px] font-bold text-brand uppercase tracking-widest bg-brand/5 px-3 py-1 rounded-full border border-brand/10">
+                Save 25% with annual billing
+              </span>
+              <div className="h-px w-4 bg-brand/20"></div>
+            </div>
           </div>
 
           <div className="w-full overflow-hidden relative">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-10 max-w-6xl mx-auto px-6 md:px-0 pb-12">
-              {[
-                {
-                  name: "Free",
-                  price: "$0",
-                  desc: "Basic access to EvidenceMD with limited question use. Perfect for exploring features.",
-                  btn: "Get Started",
-                  primary: false
-                },
-                {
-                  name: "Plus",
-                  price: "$25",
-                  period: "/ month",
-                  desc: "Full access for individual clinicians. Learner+ (CME/CPD) included automatically.",
-                  btn: "Sign Up",
-                  primary: true
-                },
-                {
-                  name: "Pro",
-                  price: "$79",
-                  period: "/ month",
-                  desc: "Includes AI Ambient Scribe for seamless documentation. Learner+ included.",
-                  btn: "Sign Up",
-                  primary: false
-                }
-              ].map((plan, i) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto px-6 md:px-0 pb-12">
+              {appPlans.map((plan, i) => (
                 <motion.div 
                   key={i}
-                  className={`w-full bg-white border border-brand/10 p-10 flex flex-col items-center text-center transition-all duration-300 relative rounded-[32px] ${
+                  className={`w-full bg-white border border-brand/10 p-10 flex flex-col transition-all duration-300 relative rounded-[32px] ${
                     plan.primary ? 'border-brand ring-4 ring-brand/5 md:scale-105 z-10 shadow-2xl' : 'shadow-sm'
                   }`}
                 >
-                  <h3 className="text-2xl mb-2 font-title">{plan.name}</h3>
-                  <div className="text-4xl md:text-5xl font-bold mb-8 text-ink">
-                    {plan.price}
-                    {plan.period && <span className="text-base font-normal text-ink/30 ml-1">{plan.period}</span>}
+                  <div className="mb-8">
+                    <h3 className="text-2xl mb-2 font-title">{plan.name}</h3>
+                    <div className="flex items-baseline gap-1">
+                      <motion.span 
+                        key={plan.price}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-5xl font-bold text-ink"
+                      >
+                        {plan.price}
+                      </motion.span>
+                      {plan.period && <span className="text-base text-ink/40 font-body">{plan.period}</span>}
+                    </div>
+                    {plan.billingNote && <p className="text-[12px] text-brand font-bold mt-1 uppercase tracking-wider">{plan.billingNote}</p>}
+                    <p className="text-ink/60 text-sm mt-4 font-body leading-relaxed">
+                      {plan.desc}
+                    </p>
                   </div>
-                  <p className="text-ink/60 text-base mb-10 font-body leading-relaxed flex-grow">
-                    {plan.desc}
-                  </p>
+
+                  <div className="space-y-4 mb-10 flex-grow">
+                    {plan.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-start gap-3">
+                        <Check size={18} className="text-brand mt-0.5 shrink-0" />
+                        <span className="text-sm text-ink/70 font-body leading-tight">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+
                   <button 
                     onClick={onSignInClick}
                     className={`button ${plan.primary ? 'button-primary' : 'button-secondary'} w-full py-4.5 rounded-2xl font-bold`}
@@ -298,9 +329,15 @@ export const CoreProduct = ({ onSignInClick }: { onSignInClick?: () => void }) =
             </div>
           </div>
 
-          <div className="mt-16 text-center px-10 pb-20 relative">
-            <p className="text-[11px] md:text-[12px] text-ink/30 font-body max-w-xl mx-auto italic">
-              Learner+ included with Plus and Pro. Plans apply to the app; API usage is priced separately.
+          <div className="mt-16 text-center px-10 pb-20 max-w-3xl mx-auto space-y-8">
+            <div className="bg-brand/5 rounded-3xl p-8 border border-brand/10 text-left">
+              <h4 className="text-brand font-bold uppercase tracking-widest text-xs mb-4">Fair usage</h4>
+              <p className="text-ink/70 font-body text-sm leading-relaxed">
+                EvidenceMD is designed to support normal clinical workflows at scale. We reserve the right to monitor usage to ensure it aligns with typical clinical practice. If usage consistently exceeds reasonable levels, we may apply caps or request a plan adjustment to protect quality and reliability for all users.
+              </p>
+            </div>
+            <p className="text-[11px] md:text-[12px] text-ink/30 font-body italic">
+              *Unlimited usage designed for normal clinical practice. Plans apply to the app; API usage is priced separately.
             </p>
           </div>
         </div>

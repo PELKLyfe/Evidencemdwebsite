@@ -135,22 +135,22 @@ export const FeaturesCarousel = () => {
       tags: ["Guidelines", "PubMed", "NIH"]
     },
     {
-      title: "Synthesized Intelligence",
-      claim: "Clinical-grade reasoning across medical databases",
+      title: "Synthesized Insight",
+      claim: "Clinical-grade analysis across medical databases",
       description: "Synthesize information across multiple reference standards to deliver a comprehensive view of complex medical queries.",
       icon: <Layers size={28} />,
       tags: ["Meta-analysis", "Databases"]
     },
     {
-      title: "Transparent Reasoning",
+      title: "Transparent Logic",
       claim: "Audit every clinical and financial decision",
-      description: "Build an evidence chain from clinical data to conclusions, producing auditable reasoning for the entire care team.",
+      description: "Build an evidence chain from clinical data to conclusions, producing auditable logic for the entire care team.",
       icon: <GitBranch size={28} />,
       tags: ["Rationale", "Auditable"]
     },
     {
       title: "Continuous Updates",
-      claim: "Reasoning that reflects current literature",
+      claim: "Analysis that reflects current literature",
       description: "Stay aligned with new clinical research and evolving medical standards through a continuously refreshed knowledge base.",
       icon: <RefreshCw size={28} />,
       tags: ["Fresh Data", "Updates"]
@@ -185,7 +185,7 @@ export const FeaturesCarousel = () => {
     },
     {
       title: "Ambient Scribe",
-      claim: "Automated clinical documentation reasoning",
+      claim: "Automated clinical documentation logic",
       description: "Generate clinician-ready notes from patient visits with minimal interruption, maintaining clinical-grade detail and accuracy.",
       icon: <Mic size={28} />,
       tags: ["Voice", "Documentation"]
@@ -193,21 +193,21 @@ export const FeaturesCarousel = () => {
     {
       title: "Clinical Trajectories",
       claim: "Visualize lab trends and baselines",
-      description: "Chart labs and clinical values over time to visualize baselines and trajectories with verifiable reasoning.",
+      description: "Chart labs and clinical values over time to visualize baselines and trajectories with verifiable logic.",
       icon: <LineChart size={28} />,
       tags: ["Labs", "Trends"]
     },
     {
-      title: "Financial Reasoning",
+      title: "Financial Logic",
       claim: "Coverage and cost-sensitive recommendations",
-      description: "Provide financial-grade reasoning for coverage checks, prior authorization logic, and SDOH-aware clinical recommendations.",
+      description: "Provide financial-grade logic for coverage checks, prior authorization logic, and SDOH-aware clinical recommendations.",
       icon: <CreditCard size={28} />,
       tags: ["Claims", "Insurance"]
     },
     {
       title: "CME/CPD Opportunities",
       claim: "Earn professional credits as you work",
-      description: "Every clinical reasoning query and evidence review contributes toward your continuing education requirements. Track CME and CPD hours automatically within your workflow.",
+      description: "Every clinical decision support query and evidence review contributes toward your continuing education requirements. Track CME and CPD hours automatically within your workflow.",
       icon: <GraduationCap size={28} />,
       tags: ["CME", "CPD", "Accreditation"]
     }
@@ -235,24 +235,24 @@ export const FeaturesCarousel = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-2xl xs:text-3xl md:text-5xl lg:text-7xl font-title text-[#003636] mb-4 md:mb-8 leading-[1.2] md:leading-[0.9] tracking-tight"
+              className="text-2xl xs:text-3xl md:text-5xl lg:text-7xl font-title text-[#003636] mb-4 md:mb-8 leading-[0.9] tracking-tight"
             >
-              Clinical capabilities for <br className="hidden md:block" />verified reasoning
+              Clinical insight meets <br className="hidden md:block" />administrative action
             </motion.h2>
             
             <div className="max-w-xs mx-auto lg:mx-0 space-y-3 md:space-y-6 relative">
               <div className="hidden md:flex flex-col gap-3 md:gap-4 mb-6 md:mb-8 text-left">
                 <div className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#006D69]"></div>
-                  <p className="text-sm font-body text-[#003636]/70">Clinical and financial reasoning modes.</p>
+                  <p className="text-sm font-body text-[#003636]/70">Closing the gap between bedside and back office.</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#006D69]"></div>
-                  <p className="text-sm font-body text-[#003636]/70">Traceable evidence chains for every decision.</p>
+                  <p className="text-sm font-body text-[#003636]/70">Unified decision support for the care continuum.</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#006D69]"></div>
-                  <p className="text-sm font-body text-[#003636]/70">Model-routed intelligence for the care team.</p>
+                  <p className="text-sm font-body text-[#003636]/70">Medical precision for administrative efficiency.</p>
                 </div>
               </div>
               <div className="flex justify-between text-[10px] md:text-xs font-bold text-[#006D69] uppercase tracking-[0.3em] font-body">

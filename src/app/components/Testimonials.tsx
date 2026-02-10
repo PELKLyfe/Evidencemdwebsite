@@ -22,7 +22,7 @@ export const Testimonials = () => {
     <section className="py-24 bg-background relative">
       <div className="container mx-auto px-6 relative">
         <div className="text-center mb-16">
-          <h2 className="font-title text-4xl text-ink mb-4">Reasoning Clinicians Trust</h2>
+          <h2 className="font-title text-4xl text-ink mb-4">Evidence Clinicians Trust</h2>
           <div className="w-20 h-1 bg-brand mx-auto rounded-full"></div>
         </div>
         

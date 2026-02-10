@@ -16,7 +16,7 @@ export const Footer = ({ onTabChange }: FooterProps) => {
           <div className="col-span-1 lg:col-span-2">
             <Logo variant="inverse" className="mb-6" />
             <p className="text-background max-w-sm mb-8 leading-relaxed font-body">
-              The reasoning infrastructure for modern healthcare
+              The translation layer between clinical intent and administrative logic.
             </p>
             <div className="flex gap-4">
               <a href="https://www.linkedin.com/company/evidencemd/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand transition-colors text-[#fefdfb]">
@@ -55,7 +55,7 @@ export const Footer = ({ onTabChange }: FooterProps) => {
             </div>
           </div>
           <div className="text-[#fefdfb]/50 text-sm font-body text-right">
-            <p>Reasoning Clinicians Trust</p>
+            <p>Clinical insight you can trust</p>
             <p>© {new Date().getFullYear()} EvidenceMD.ai. All rights reserved.</p>
           </div>
         </div>

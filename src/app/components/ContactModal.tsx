@@ -130,7 +130,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                   </div>
                   <textarea
                     {...register('message', { required: 'Message is required' })}
-                    placeholder="How can EvidenceMD support your clinical reasoning workflow?"
+                    placeholder="How can EvidenceMD support your clinical decision support workflow?"
                     rows={4}
                     className="w-full bg-white border border-muted/20 rounded-lg py-3 pl-10 pr-4 text-ink font-body text-sm focus:outline-none focus:border-brand/50 transition-colors resize-none"
                   />
