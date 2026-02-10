@@ -54,7 +54,7 @@ function AppContent() {
       case 'home':
         return (
           <div className="relative">
-            <Hero onTabChange={setActiveTab} />
+            <Hero onTabChange={setActiveTab} onSignInClick={handleSignIn} />
             <WhoItsFor />
             <FeaturesCarousel />
             <Testimonials />
