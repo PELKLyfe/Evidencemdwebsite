@@ -18,10 +18,10 @@ export const ReasoningQuality = ({ onSignInClick }: { onSignInClick?: () => void
   const [showDocumentation, setShowDocumentation] = useState(false);
 
   const benchmarks = [
-    { name: "EvidenceMD", score: "96%", label: "Medical AI Leader", active: true },
-    { name: "GPT-5 Pro", score: "90%", label: "OpenAI", active: false },
-    { name: "Claude 4.5 Opus", score: "88%", label: "Anthropic", active: false },
-    { name: "Gemini 3 Pro", score: "85%", label: "Google", active: false }
+    { name: "EvidenceMD", score: "94%", label: "Medical AI Leader", active: true },
+    { name: "GPT-5 Pro", score: "83%", label: "OpenAI", active: false },
+    { name: "Claude 4.5 Opus", score: "76%", label: "Anthropic", active: false },
+    { name: "Gemini 3 Pro", score: "70%", label: "Google", active: false }
   ];
 
   const comparisonFeatures = [
@@ -33,15 +33,14 @@ export const ReasoningQuality = ({ onSignInClick }: { onSignInClick?: () => void
 
   if (showDocumentation) {
     return (
-      <section className="py-24 bg-background min-h-screen relative">
-        <div className="container mx-auto px-6 relative">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <ApiDocumentation onBack={() => setShowDocumentation(false)} />
-          </motion.div>
-        </div>
+      <section className="bg-[#FEFDFB] min-h-screen relative">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4 }}
+        >
+          <ApiDocumentation onBack={() => setShowDocumentation(false)} />
+        </motion.div>
       </section>
     );
   }
@@ -338,7 +337,7 @@ export const ReasoningQuality = ({ onSignInClick }: { onSignInClick?: () => void
                   </div>
                   <div className="text-2xl font-bold text-ink mb-4">$0.05 <span className="text-sm font-normal text-ink/40">/ request</span></div>
                   <p className="text-ink/60 text-sm font-body leading-snug">
-                    Quick clinical answers and lightweight evidence lookup.
+                    Quick clinical answers and lightweight evidence lookup. (~20s response)
                   </p>
                 </div>
 
@@ -350,7 +349,7 @@ export const ReasoningQuality = ({ onSignInClick }: { onSignInClick?: () => void
                   </div>
                   <div className="text-2xl font-bold text-ink mb-4">$0.10 <span className="text-sm font-normal text-ink/40">/ request</span></div>
                   <p className="text-ink/60 text-sm font-body leading-snug">
-                    Comprehensive analysis with deeper synthesis and longer evidence chains.
+                    Comprehensive analysis with deeper synthesis and longer evidence chains. (~40s response)
                   </p>
                 </div>
               </div>
