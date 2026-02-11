@@ -145,13 +145,7 @@ export const CoreProduct = ({ onSignInClick }: { onSignInClick?: () => void }) =
               </div>
               
               {/* Floating logic label */}
-              <div className="absolute -right-4 top-1/4 bg-white shadow-xl border border-brand/10 p-4 rounded-2xl hidden md:block max-w-[140px]">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-2 h-2 rounded-full bg-brand animate-pulse" />
-                  <span className="text-[10px] font-bold text-brand uppercase tracking-tighter">Live Insight</span>
-                </div>
-                <p className="text-[11px] text-ink leading-tight font-body">Clinical synthesis generated in real-time.</p>
-              </div>
+              
 
               {/* Patient Data Disclaimer */}
               <div className="mt-8 px-6 text-center">
