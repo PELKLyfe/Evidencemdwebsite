@@ -14,9 +14,13 @@ export const Navbar = ({ activeTab, onTabChange, onSignInClick }: NavbarProps) =
   const navLinks = [
     { name: 'Home', id: 'home' },
     { name: 'Vision', id: 'vision' },
-    { name: 'App', id: 'app' },
-    { name: 'API', id: 'api' },
     { name: 'Enterprise', id: 'enterprise' },
+    { name: 'API', id: 'api' },
+    { 
+      name: 'Download App', 
+      id: 'app',
+      tooltip: 'The full EvidenceMD platform, optimized for mobile clinical workflows.'
+    },
   ];
 
   const handleTabClick = (id: string) => {
@@ -38,20 +42,28 @@ export const Navbar = ({ activeTab, onTabChange, onSignInClick }: NavbarProps) =
         {/* Desktop Nav */}
         <div className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
-            <button
-              key={link.id}
-              onClick={() => handleTabClick(link.id)}
-              className={`text-sm font-semibold transition-all cursor-pointer relative py-1 ${
-                activeTab === link.id 
-                  ? 'text-ink' 
-                  : 'text-ink/60 hover:text-ink'
-              }`}
-            >
-              {link.name}
-              {activeTab === link.id && (
-                <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-brand rounded-full" />
+            <div key={link.id} className="relative group/nav">
+              <button
+                onClick={() => handleTabClick(link.id)}
+                className={`text-sm font-semibold transition-all cursor-pointer relative py-1 ${
+                  activeTab === link.id 
+                    ? 'text-ink' 
+                    : 'text-ink/60 hover:text-ink'
+                }`}
+              >
+                {link.name}
+                {activeTab === link.id && (
+                  <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-brand rounded-full" />
+                )}
+              </button>
+              
+              {link.tooltip && (
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-ink text-white text-[11px] font-medium p-3 rounded-xl opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-200 shadow-xl z-50 pointer-events-none">
+                  <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-ink rotate-45" />
+                  {link.tooltip}
+                </div>
               )}
-            </button>
+            </div>
           ))}
           <button 
             onClick={onSignInClick}

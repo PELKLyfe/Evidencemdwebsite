@@ -8,9 +8,10 @@ import krishnaImg from "figma:asset/a6fd9ff7074d23643e060886ba2fb23101bcd8a2.png
 
 interface VisionProps {
   onTabChange?: (tab: string) => void;
+  onSignInClick?: () => void;
 }
 
-export const Vision = ({ onTabChange }: VisionProps) => {
+export const Vision = ({ onTabChange, onSignInClick }: VisionProps) => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -234,13 +235,32 @@ export const Vision = ({ onTabChange }: VisionProps) => {
                   variants={itemVariants}
                   className="pt-20 pb-32"
                 >
-                  <div className="group cursor-pointer">
-                    <h2 className="text-5xl font-[Playfair_Display] text-ink group-hover:text-brand transition-colors leading-tight italic">
+                  <div className="space-y-12">
+                    <h2 className="text-5xl font-[Playfair_Display] text-ink leading-tight italic max-w-2xl">
                       The future of healthcare will be built. EvidenceMD is the intelligence layer it will be built on.
                     </h2>
-                    <div className="mt-8 flex items-center gap-3 text-brand font-bold uppercase tracking-widest text-sm">
-                      <span onClick={() => onTabChange?.('api')}>Access API Documentation</span>
-                      <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
+                    
+                    <div className="flex flex-wrap items-center gap-x-12 gap-y-6 pt-4 border-t border-muted/20">
+                      <button 
+                        onClick={() => onTabChange?.('api')}
+                        className="group flex items-center gap-2 text-brand font-bold uppercase tracking-widest text-xs hover:text-[#005a57] transition-colors"
+                      >
+                        Access API <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                      </button>
+                      
+                      <button 
+                        onClick={onSignInClick}
+                        className="group flex items-center gap-2 text-brand font-bold uppercase tracking-widest text-xs hover:text-[#005a57] transition-colors"
+                      >
+                        Explore platform <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                      </button>
+                      
+                      <button 
+                        onClick={() => onTabChange?.('app')}
+                        className="group flex items-center gap-2 text-brand font-bold uppercase tracking-widest text-xs hover:text-[#005a57] transition-colors"
+                      >
+                        Download app <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                      </button>
                     </div>
                   </div>
                 </motion.div>

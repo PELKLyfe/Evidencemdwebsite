@@ -44,6 +44,7 @@ import { Logo } from './Logo';
 
 interface ApiDocumentationProps {
   onBack: () => void;
+  onSignInClick?: () => void;
 }
 
 // Reusable Components
@@ -167,7 +168,7 @@ const TabbedCodeViewer = ({ tabs, streamingToggle = false }: {
   );
 };
 
-export const ApiDocumentation: React.FC<ApiDocumentationProps> = ({ onBack }) => {
+export const ApiDocumentation: React.FC<ApiDocumentationProps> = ({ onBack, onSignInClick }) => {
   const [activeSection, setActiveSection] = useState('hero');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -1008,6 +1009,48 @@ export const ApiDocumentation: React.FC<ApiDocumentationProps> = ({ onBack }) =>
                 Benchmarks conducted on USMLE, MedQA, and internal medical billing reasoning datasets. Last updated February 2026.
               </p>
             </div>
+          </div>
+        </section>
+
+        {/* FINAL CTA SECTION */}
+        <section className="px-6 md:px-20 py-24 bg-white border-t border-slate-100">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="p-12 md:p-20 rounded-[48px] bg-[#003636] text-white relative overflow-hidden shadow-2xl shadow-[#003636]/20"
+            >
+              <div className="absolute top-0 right-0 w-96 h-96 bg-[#006D69]/20 rounded-full blur-[100px] -mr-48 -mt-48"></div>
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-teal-400/5 rounded-full blur-[80px] -ml-32 -mb-32"></div>
+              
+              <div className="relative z-10">
+                <h2 className="text-3xl md:text-5xl font-title mb-6 leading-tight text-white">
+                  Ready to integrate clinical-grade <br className="hidden md:block" />
+                  decision support?
+                </h2>
+                <p className="text-lg text-white/90 font-body mb-10 max-w-xl mx-auto">
+                  Build the future of evidence-based healthcare. Get your API key today and start building in minutes.
+                </p>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                  <button 
+                    onClick={onSignInClick}
+                    className="button w-full sm:w-auto bg-[#006D69] hover:bg-[#005a57] text-white px-10 py-4 flex items-center justify-center gap-2 group transition-all"
+                  >
+                    Get API Key <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                  </button>
+                  <button 
+                    onClick={onBack}
+                    className="button w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white px-10 py-4 backdrop-blur-sm transition-all border border-white/10"
+                  >
+                    Back to Website
+                  </button>
+                </div>
+                <p className="mt-8 text-xs text-white/50 font-body uppercase tracking-[0.2em]">
+                  Start with 5 free credits
+                </p>
+              </div>
+            </motion.div>
           </div>
         </section>
 

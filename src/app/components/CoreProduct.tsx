@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { FileText, Image as ImageIcon, MessageSquare, ArrowUp, Paperclip, Share2, Bookmark, Check, ChevronRight } from 'lucide-react';
+import { FileText, Image as ImageIcon, MessageSquare, ArrowUp, Paperclip, Share2, Bookmark, Check, ChevronRight, Minus } from 'lucide-react';
 import { PixelCorner } from './PixelCorner';
 import appScreenshot from "figma:asset/ead860eee7467ede18a71a54fc9c6bcb4464eb53.png";
 import brandIcon from "figma:asset/553df17da779a92d47a352fd5eecb52645fc0217.png";
@@ -49,11 +49,11 @@ export const CoreProduct = ({ onSignInClick }: { onSignInClick?: () => void }) =
       name: "Free",
       price: "$0",
       period: "",
-      desc: "Perfect for exploring core capabilities.",
+      desc: "Perfect for exploring core workflows.",
       features: [
         "Basic note generation",
-        "10 free scribe sessions",
-        "Limited decision support questions",
+        "10 scribe sessions included",
+        "Limited clinical decision support questions",
         "Standard capabilities included"
       ],
       btn: "Get Started",
@@ -63,19 +63,101 @@ export const CoreProduct = ({ onSignInClick }: { onSignInClick?: () => void }) =
       name: "Pro",
       price: billingCycle === 'annually' ? "$89" : "$119",
       period: "/ month",
+      badge: "Most popular",
       billingNote: billingCycle === 'annually' ? "Billed annually" : "Billed monthly",
-      desc: "Unlimited capacity for professional practice.",
+      secondaryPrice: billingCycle === 'annually' ? "$119 / month billed monthly" : "$89 / month billed annually",
+      desc: "Professional-grade platform for documentation + clinical, administrative, and longitudinal decision support—optimized for mobile and tablet.",
       features: [
+        "Everything in Free",
         "Unlimited note generation",
-        "Unlimited scribe sessions",
-        "Unlimited clinical decision support*",
-        "All Pro Actions included",
-        "Higher-intensity workflows & CME/CPD"
+        "Scribe included (fair-use)",
+        "Clinical decision support with citations (fair-use)",
+        "Financial & administrative reasoning",
+        "Imaging analysis summaries",
+        "Trend charts + longitudinal interpretation",
+        "Higher-intensity workflows",
+        "CME/CPD tracking & credits",
+        "Pro Actions included"
       ],
       btn: "Sign Up",
       primary: true
     }
   ];
+
+  const PricingCard = ({ plan, i, onSignInClick }: { plan: any, i: number, onSignInClick: any }) => {
+    const [isExpanded, setIsExpanded] = useState(false);
+    const visibleFeatures = isExpanded ? plan.features : plan.features.slice(0, 3);
+    const hasMore = plan.features.length > 3;
+
+    return (
+      <motion.div 
+        layout
+        key={i}
+        className={`w-full h-full bg-white border border-brand/10 p-8 md:p-10 flex flex-col transition-all duration-300 relative rounded-[32px] ${
+          plan.primary ? 'border-brand ring-4 ring-brand/5 md:scale-105 z-10 shadow-2xl' : 'shadow-sm'
+        }`}
+      >
+        {plan.badge && (
+          <div className="absolute -top-3 left-10 bg-brand text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-lg shadow-brand/20">
+            {plan.badge}
+          </div>
+        )}
+        <div className="mb-8">
+          <h3 className="text-2xl mb-2 font-title">{plan.name}</h3>
+          <div className="flex flex-col">
+            <div className="flex items-baseline gap-1">
+              <span className="text-5xl font-bold text-ink">{plan.price}</span>
+              {plan.period && <span className="text-base text-ink/40 font-body">{plan.period}</span>}
+            </div>
+            <div className="flex flex-col mt-1">
+              {plan.billingNote && <span className="text-[12px] text-brand font-bold uppercase tracking-wider">{plan.billingNote}</span>}
+              {plan.secondaryPrice && <span className="text-[11px] text-ink/40 font-body mt-0.5">{plan.secondaryPrice}</span>}
+            </div>
+          </div>
+          <p className="text-ink/60 text-sm mt-6 font-body leading-relaxed">
+            {plan.desc}
+          </p>
+        </div>
+
+        <div className="space-y-4 mb-6 flex-grow">
+          <AnimatePresence initial={false}>
+            {visibleFeatures.map((feature: string, idx: number) => (
+              <motion.div 
+                key={feature} 
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                className="flex items-start gap-3"
+              >
+                <Check size={18} className="text-brand mt-0.5 shrink-0" />
+                <span className="text-sm text-ink/70 font-body leading-tight">{feature}</span>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
+
+        {hasMore && (
+          <button 
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="flex items-center gap-2 text-[11px] font-bold text-brand uppercase tracking-widest mb-8 hover:opacity-70 transition-opacity w-fit"
+          >
+            {isExpanded ? (
+              <>Show less <Minus size={12} /></>
+            ) : (
+              <>Show all {plan.features.length} features <ChevronRight size={12} className="rotate-90" /></>
+            )}
+          </button>
+        )}
+
+        <button 
+          onClick={onSignInClick}
+          className={`button ${plan.primary ? 'button-primary' : 'button-secondary'} w-full py-4.5 rounded-2xl font-bold mt-auto`}
+        >
+          {plan.btn}
+        </button>
+      </motion.div>
+    );
+  };
 
   return (
     <section id="app" className="py-16 bg-background relative overflow-hidden">
@@ -87,11 +169,11 @@ export const CoreProduct = ({ onSignInClick }: { onSignInClick?: () => void }) =
             viewport={{ once: true }}
             className="mb-4 text-4xl md:text-5xl lg:text-6xl text-ink font-title tracking-tight"
           >
-            Decision support built for the <span className="text-brand italic font-display text-4xl md:text-[48px]">care team.</span>
+            Clinical reasoning, <span className="text-brand italic font-display text-4xl md:text-[48px]">everywhere.</span>
           </motion.h2>
           <div className="max-w-3xl mx-auto mt-6">
             <p className="text-ink/60 font-body text-lg italic">
-              Three core outputs designed for real clinical workflow.
+              The full EvidenceMD platform optimized for mobile clinical workflows.
             </p>
           </div>
         </div>
@@ -144,9 +226,6 @@ export const CoreProduct = ({ onSignInClick }: { onSignInClick?: () => void }) =
                 </div>
               </div>
               
-              {/* Floating logic label */}
-              
-
               {/* Patient Data Disclaimer */}
               <div className="mt-8 px-6 text-center">
                 <p className="text-[10px] md:text-[11px] text-ink/30 font-body uppercase tracking-widest leading-relaxed">
@@ -236,16 +315,16 @@ export const CoreProduct = ({ onSignInClick }: { onSignInClick?: () => void }) =
         </div>
 
         {/* Product Tiers */}
-        <div className="mt-24 md:mt-40 pt-20 border-t border-muted/10 relative">
-          <div className="text-center mb-12 px-6 max-w-3xl mx-auto">
-            <h2 className="mb-6 text-4xl md:text-5xl font-title">Flexible plans for clinical teams</h2>
+        <div className="mt-12 md:mt-16 pt-12 border-t border-muted/10 relative">
+          <div className="text-center mb-10 px-6 max-w-3xl mx-auto">
+            <h2 className="mb-6 text-4xl md:text-5xl font-title">Pricing</h2>
             <p className="text-xl text-ink/70 font-body leading-relaxed">
-              Transparent pricing for clinicians and teams. Start free, then upgrade for unlimited documentation and decision support.
+              Simple plans for clinical-grade decision support.
             </p>
           </div>
 
           {/* Billing Toggle */}
-          <div className="flex flex-col items-center mb-16">
+          <div className="flex flex-col items-center mb-10">
             <div className="relative bg-brand/5 p-1.5 rounded-2xl flex items-center border border-brand/10 shadow-sm">
               <motion.div 
                 initial={false}
@@ -268,71 +347,42 @@ export const CoreProduct = ({ onSignInClick }: { onSignInClick?: () => void }) =
             </div>
             <div className="mt-3 flex items-center gap-2">
               <div className="h-px w-4 bg-brand/20"></div>
-              <span className="text-[12px] font-bold text-brand uppercase tracking-widest bg-brand/5 px-3 py-1 rounded-full border border-brand/10">
-                Save 25% with annual billing
+              <span className="text-[12px] font-bold text-brand uppercase tracking-[0.2em] bg-brand/5 px-4 py-1.5 rounded-full border border-brand/10">
+                SAVE 20% WITH ANNUAL BILLING
               </span>
               <div className="h-px w-4 bg-brand/20"></div>
             </div>
           </div>
 
-          <div className="w-full overflow-hidden relative">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto px-6 md:px-0 pb-12">
+          <div className="w-full relative py-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto px-6 md:px-0">
               {appPlans.map((plan, i) => (
-                <motion.div 
-                  key={i}
-                  className={`w-full bg-white border border-brand/10 p-10 flex flex-col transition-all duration-300 relative rounded-[32px] ${
-                    plan.primary ? 'border-brand ring-4 ring-brand/5 md:scale-105 z-10 shadow-2xl' : 'shadow-sm'
-                  }`}
-                >
-                  <div className="mb-8">
-                    <h3 className="text-2xl mb-2 font-title">{plan.name}</h3>
-                    <div className="flex items-baseline gap-1">
-                      <motion.span 
-                        key={plan.price}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="text-5xl font-bold text-ink"
-                      >
-                        {plan.price}
-                      </motion.span>
-                      {plan.period && <span className="text-base text-ink/40 font-body">{plan.period}</span>}
-                    </div>
-                    {plan.billingNote && <p className="text-[12px] text-brand font-bold mt-1 uppercase tracking-wider">{plan.billingNote}</p>}
-                    <p className="text-ink/60 text-sm mt-4 font-body leading-relaxed">
-                      {plan.desc}
-                    </p>
-                  </div>
-
-                  <div className="space-y-4 mb-10 flex-grow">
-                    {plan.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-start gap-3">
-                        <Check size={18} className="text-brand mt-0.5 shrink-0" />
-                        <span className="text-sm text-ink/70 font-body leading-tight">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <button 
-                    onClick={onSignInClick}
-                    className={`button ${plan.primary ? 'button-primary' : 'button-secondary'} w-full py-4.5 rounded-2xl font-bold`}
-                  >
-                    {plan.btn}
-                  </button>
-                </motion.div>
+                <PricingCard key={i} plan={plan} i={i} onSignInClick={onSignInClick} />
               ))}
             </div>
           </div>
 
-          <div className="mt-16 text-center px-10 pb-20 max-w-3xl mx-auto space-y-8">
-            <div className="bg-brand/5 rounded-3xl p-8 border border-brand/10 text-left">
-              <h4 className="text-brand font-bold uppercase tracking-widest text-xs mb-4">Fair usage</h4>
-              <p className="text-ink/70 font-body text-sm leading-relaxed">
-                EvidenceMD is designed to support normal clinical workflows at scale. We reserve the right to monitor usage to ensure it aligns with typical clinical practice. If usage consistently exceeds reasonable levels, we may apply caps or request a plan adjustment to protect quality and reliability for all users.
+          {/* Policy Section */}
+          <div className="mt-20 pt-16 border-t border-brand/10 px-6 max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-12 text-left">
+              <div className="space-y-4">
+                <h4 className="text-[10px] font-bold text-brand uppercase tracking-[0.2em]">Fair use policy</h4>
+                <p className="text-sm text-ink/60 font-body leading-relaxed">
+                  Scribe and decision support are included under a generous fair-use policy to protect reliability for all users. Typical professional usage stays within fair use. Excessive or automated usage may be temporarily throttled. Need guaranteed higher limits or team controls? <a href="mailto:enterprise@evidencemd.ai" className="text-brand underline">Contact us for Enterprise.</a>
+                </p>
+              </div>
+              <div className="space-y-4">
+                <h4 className="text-[10px] font-bold text-brand uppercase tracking-[0.2em]">CME/CPD</h4>
+                <p className="text-sm text-ink/60 font-body leading-relaxed">
+                  CME/CPD tracking is available today; credits are coming soon.
+                </p>
+              </div>
+            </div>
+            <div className="mt-12 text-center">
+              <p className="text-[10px] text-ink/30 font-body italic">
+                *Plans apply to the app; API usage is priced separately.
               </p>
             </div>
-            <p className="text-[11px] md:text-[12px] text-ink/30 font-body italic">
-              *Unlimited usage designed for normal clinical practice. Plans apply to the app; API usage is priced separately.
-            </p>
           </div>
         </div>
       </div>

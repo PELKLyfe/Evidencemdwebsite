@@ -64,7 +64,7 @@ export const Hero = ({ onTabChange, onSignInClick }: { onTabChange: (tab: string
             >
               <div className="space-y-5">
                 <p className="text-xl lg:text-2xl font-display text-brand italic text-[22px]">
-                  Platform for teams. API for builders.
+                  Platform for care teams. API for builders.
                 </p>
                 <div className="flex flex-col gap-4">
                   <button 

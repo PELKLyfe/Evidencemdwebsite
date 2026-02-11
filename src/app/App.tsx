@@ -39,8 +39,8 @@ function AppContent() {
           </>
         );
       case 'app': return <CoreProduct />;
-      case 'api': return <ReasoningQuality />;
-      case 'vision': return <Vision onTabChange={setActiveTab} />;
+      case 'api': return <ReasoningQuality onSignInClick={() => setShowLoginPage(true)} />;
+      case 'vision': return <Vision onTabChange={setActiveTab} onSignInClick={() => setShowLoginPage(true)} />;
       case 'enterprise': return <GTMValue onContactClick={() => setIsContactModalOpen(true)} />;
       default: return <Hero onTabChange={setActiveTab} />;
     }

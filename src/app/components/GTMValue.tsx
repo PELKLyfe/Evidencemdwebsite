@@ -16,7 +16,7 @@ export const GTMValue = ({ onContactClick }: { onContactClick: () => void }) => 
             viewport={{ once: true }}
             className="text-white text-[32px] md:text-[42px] mb-4 font-title max-w-4xl mx-auto"
           >
-            Evidence-based clinical reasoning infrastructure for enterprise teams.
+            Evidence-based clinical decision support infrastructure for enterprise teams.
           </motion.h2>
 
           <motion.div 

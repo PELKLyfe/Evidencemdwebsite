@@ -39,7 +39,10 @@ export const ReasoningQuality = ({ onSignInClick }: { onSignInClick?: () => void
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4 }}
         >
-          <ApiDocumentation onBack={() => setShowDocumentation(false)} />
+          <ApiDocumentation 
+            onBack={() => setShowDocumentation(false)} 
+            onSignInClick={onSignInClick}
+          />
         </motion.div>
       </section>
     );
